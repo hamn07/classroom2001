@@ -1,0 +1,587 @@
+
+<!-- 【中文亂碼全面防堵-mac】 -->
+<!-- 1. chrome → 偏好設定 → 顯示進階設定 → 網頁內容 → 自訂字型 → 編碼方式(big5，改UTF-8) (在最下方) -->
+
+<!-- 2. sublime設定 -->
+   <!-- 2-1 Sublime Text → Preference → Package Control → 點選 install package -->
+   <!-- 2-2 在install package對話格內 → 搜尋ConvertToUTF8 → 安裝 -->
+   <!-- 2-3 Sublime Text → Preference → Settings - User → 加入 "default_encoding": "UTF-8", -->
+
+
+
+<!--1. HTML 架構 (ch2) -- >
+<!--http://www.w3schools.com/html/html_intro.asp-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--這一個區塊會放網頁相關資訊、引用資料等等-->
+    </head>
+
+    <body>
+        <!--定義網頁內容-->
+    </body>
+</html>
+
+
+
+
+
+<!--2. Hello HTML!!-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    Hello HTML!!
+</body>
+</html>
+
+
+
+
+
+<!--3. Hello HTML!!-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!--大部分的情況下，瀏覽器會忽略空白字元或換行符號-->
+    <!--所以請盡量使用，讓HTML原始碼排列整齊好閱讀-->
+    Hello 
+
+
+    HTML!!
+</body>
+</html>
+
+
+
+
+
+<!--4. 標籤(tag)-->
+<!--http://www.w3schools.com/tags/-->
+
+
+
+
+
+<!--4-1. 文字格式標籤 (ch3-2)-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    Hello HTML!!
+
+    <!--字體效果-->
+    <!--<b> <em> <strong> <i>-->
+
+    <!--換行符號-->
+    <!--<br>-->
+    
+    <!--標題-->
+    <!--<h1>~<h6>-->
+
+    <!--刪除線、底線-->
+    <!--<s> <u>-->
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--4-2. 段落/區塊標籤 (ch3-1)-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!--段落<p>預設換行符號-->
+
+    <!--在<pre>標籤中間的文字，格式會被保留下來-->
+    Be the change you want to see in the world. -Mathatma Gandhi 甘地
+    成為那個，你心中想看見的改變。
+
+    <!--水平分隔線-->
+    <!-- <hr> -->
+
+    <!--<div>：會在元素的前後換行，區塊元素(block level)-->
+    banana
+    orange
+
+    <!--<span>：不會在元素的前後換行，行內元素(inline level)-->
+    kiwi
+    watermelon
+</body>
+
+</html>
+
+
+
+
+
+
+<!--4-3. HTML5 新增的結構元素(ch2-5)-->
+
+<!--4-3-1. 有「語意」的標籤-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <article>
+        <hgroup>
+            <header>header1</header>
+            <header>header2</header>
+        </hgroup>
+        <section>section</section>
+        <footer>footer</footer>
+    </article>
+</body>
+
+</html>
+
+
+
+
+
+
+<!--補：<nav> Navigation 導覽列、<aside>側邊欄 也都是只有語意而已。-->
+
+
+
+
+
+
+<!--4-3-2. 結構元素，加入先前提到的文字格式標籤試試看!!(ch2-5)-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!--<article>一篇文章 (新聞、blog等等)-->
+
+    <!--<hgroup>主標題-->
+    我的日本縱貫旅行~日本好好玩!!
+
+    <!--<section>分割文章的段落-->
+    豪斯登堡 
+    看到千陽號在海上航行是一件很感人的事情。 
+
+    <!--<section>分割文章的段落-->
+    宮島 
+    海中鳥居很厲害~ 
+    很多鹿，鹿的毛其實刺刺的一點也不好摸 XD
+    
+    <!-- <footer> 網頁底部，用來說明網頁資訊等等-->
+    我是作者，這是版本v1.0
+</body>
+
+</html>
+
+
+
+
+
+
+<!--4-4. 和結構元素有點相近的 項目符號及項目編號(ch3-3) / 清單(ch3-4) 元素 -->
+
+<!-- 4-4-1. 無排序的項目 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!-- ul：unordered list -->
+    大墩路-太初
+    公益路-日出拉麵
+    公益路-鼎王
+    公益路-輕井澤
+    公益路-無老鍋
+    公益路-八錢
+</body>
+
+</html>
+
+
+
+
+
+<!-- 4-4-2. 試試看，如果想要改變項目符號的圖示，要幫ul設定哪一項屬性? 有哪幾種圖示?-->
+
+
+
+
+
+<!-- 4-4-3. 可以排序的項目-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!-- ol：ordered list -->
+    公益路-赤鬼
+    華美西街-小六鍋貼
+    美村路-烤肉飯
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 4-4-4. 試試看，能不能改變清單編號類型? 從123改成ABC或者其他? 只能從1號開始編嗎?-->
+
+
+
+
+
+
+<!-- 4-4-5. 清單-->
+<!-- 複習一下，幫「台中已吃清單」加上標題tag -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!-- dl：description list -->
+    <!-- dt：description list -->
+    <!-- dd：description descriptions -->
+    台中已吃清單
+
+    大墩路
+        太初
+
+    公益路
+        日出拉麵
+        鼎王
+        輕井澤
+        無老鍋
+        八錢
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 4-5. ch2和ch3，在課堂上沒有用到的tag，試著實作看看，觀察一下效果吧!! -->
+
+
+
+
+
+
+<!--5. 屬性(attribute)、CSS(style)-->
+<!--http://www.w3schools.com/html/html_attributes.asp-->
+<!--http://www.w3schools.com/cssref/-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!--一份HTML文件中，id屬性是唯一值-->
+    <div id="apple">Apple</div>
+    <div id="banana">Banana</div>
+    <div id="orange">Orange</div>
+    <div id="kind">以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--5-1. 顏色 (ch10-1、ch10-2)、字型大小 (ch9-1)-->
+<!--http://www.w3schools.com/tags/ref_colorpicker.asp-->
+<!--http://www.w3schools.com/html/html_colorvalues.asp-->
+
+
+
+
+
+
+<!--5-1-1. 目標：改變文字顏色 -->
+<!--5-1-2. 目標：加入背景底色 -->
+<!--5-1-3. 目標：更改文字大小 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <div id="apple">Apple</div>
+    <div id="banana">Banana</div>
+    <div id="orange">Orange</div>
+    <div id="kind">以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+
+<!--5-2. 將CSS部分獨立撰寫 (ch8)-->
+<!--a. CSS會區分文字大小寫-->
+<!--b. CSS註解方式為/**/-->
+<!--c. 如果屬性值包含空白，記得將屬性值前後加上雙引號或者單引號-->
+<!--w3c：The <style> tag is used to define style information for an HTML document.-->
+
+
+
+
+
+<!--5-2-1. 在 <style> 標籤裡面 以 HTML標籤名稱當作選擇器-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+
+    <style type="text/css">
+
+        /*=======在這裡加入程式碼=======*/
+        /*將所有 <div> 元素 的字體調整為100px*/
+
+    </style>
+
+</head>
+
+<body>
+    <div>Apple</div>
+    <div>Banana</div>
+    <div>Orange</div>
+    <div>以上是水果種類</div>
+</body>
+</html>
+
+
+
+
+
+<!--5-2-2. 以 id 當作選擇器-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+
+    <style type="text/css">
+
+        /*=======在這裡加入程式碼=======*/
+        /*幫 各個水果 元素 給定一個id，並個別設定顏色 */
+
+    </style>
+
+</head>
+
+<body>
+    <div id="appleID">Apple</div>
+    <div>Banana</div>
+    <div>Orange</div>
+    <div>以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+<!--5-2-3. 以 類別 (class) 當作選擇器-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+
+    <style type="text/css">
+
+        /*=======在這裡加入程式碼=======*/
+        /*幫 水果 類別 設定顏色 */
+
+    </style>
+
+</head>
+
+<body>
+    <div id="appleID"  class="fruit">Apple</div>
+    <div id="bananaID" class="fruit">Banana</div>
+    <div id="orangeID" class="fruit">Orange</div>
+    <div>以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+<!--5-2-4. 權重，如果兩種不同的設定，會以誰為主?-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+
+    <style type="text/css">
+
+        div { font-size: 100px }
+
+        #appleID{ color: #FF0000;}
+        #bananaID{ color: #FFFF00;}
+        #orangeID{ color: #FF9933;}
+
+        .fruit { background-color: #9DBDFF; }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="appleID"  class="fruit">Apple</div>
+    <div id="bananaID" class="fruit">Banana</div>
+    <div id="orangeID" class="fruit">Orange</div>
+    <div style="font-size: 20px">以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+
+<!--6. 將CSS獨立為一個檔案，使用link元素連結至HTML檔案 (ch8-3)-->
+<!--http://www.w3schools.com/tags/tag_link.asp-->
+<!--rel：資源文件與目前文件的關係-->
+<!--type：類型-->
+<!--href：指定樣式檔案位置-->
+
+<!--link用來連接網頁與外部資源的關係，沒有結尾標籤，因為在這兩個標籤內不會有物件-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+    <link rel="stylesheet" type="text/css" href="fruit_style.css">
+</head>
+
+<body>
+    <div id="appleID"  class="fruit">Apple</div>
+    <div id="bananaID" class="fruit">Banana</div>
+    <div id="orangeID" class="fruit">Orange</div>
+    <div style="font-size: 20px">以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+<!-- 7. <head> -->
+<!-- http://www.w3schools.com/tags/att_meta_name.asp -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- title：文件標題 -->
+    <title> HTML - part1 - basic </title>
+
+    <!-- meta：metadata，詮釋資料，data about data，文件相關資訊 -->
+
+    <!-- 瀏覽器會根據伺服器送過來的 header 或是用其他方法來判定 HTML文件的編碼-->
+    <!-- 但是判定不一定會是正確的，所以我們會在 <head> 告訴瀏覽器，這一份HTML文件的編碼是什麼 -->
+    <meta charset="UTF-8">
+    
+    <!-- <meta> 標籤內的 name 屬性，w3cschool的官方文件有哪些? -->
+    <!-- meta的資訊，會提供搜尋引擎使用，有助於搜尋引擎優化(SEO，Search Engine Optimization) -->
+    <meta name="author" content="KathyHsu">
+    <meta name="keywords" content="HTML,CSS,說明文件">
+    <meta name="description" content="這一份文件在說明HTML架構">    
+
+    <!--link：連結外部css檔案-->
+    <link rel="stylesheet" type="text/css" href="fruit_style.css">
+</head>
+
+<body>
+    <div id="appleID"  class="fruit">Apple</div>
+    <div id="bananaID" class="fruit">Banana</div>
+    <div id="orangeID" class="fruit">Orange</div>
+    <div style="font-size: 20px">以上是水果種類</div>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- try it!! ul 和 ol 直式清單，能不能透過CSS設定改為橫向表示? -->
+<!-- #大墩路-太初 #公益路-日出拉麵 #公益路-鼎王 #公益路-輕井澤 #公益路-無老鍋 #公益路-八錢 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - part1 - basic </title>
+</head>
+
+<body>
+    <!-- ul：unordered list -->
+    <ul>
+        <li>#大墩路-太初</li>
+        <li>#公益路-日出拉麵</li>
+        <li>#公益路-鼎王</li>
+        <li>#公益路-輕井澤</li>
+        <li>#公益路-無老鍋</li>
+        <li>#公益路-八錢</li>
+    </ul>
+</body>
+
+</html>
