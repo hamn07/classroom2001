@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Box Model</title>
+    <style type="text/css">
+    #content1 {
+        position: relative;
+    }
+    
+    #img {
+        width: 100%;
+    }
+    
+    .desc {
+        font-size: 1.2em;
+        height: 2em;
+        line-height: 2em;
+        position: absolute;
+        width: 100%;
+    }
+    
+    #title {
+        background-color: #FFFFFF;
+        opacity: 0.4;
+        top: 5%;
+        padding-left: 10px;
+    }
+    
+    #info {
+        background-color: rgba(255, 255, 255, 0.4);
+        top: 10%;
+        padding-left: 50px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 語意化：表示帶標題的圖片 -->
+    <figure id="content1">
+        <figcaption id="title" class="desc">2013.10 豪斯登堡</figcaption>
+        <figcaption id="info" class="desc">千陽號海上行</figcaption>
+        <img id="img" src="sunny.jpg">
+    </figure>
+    
+    <!-- 
+    <div id="content1">
+        <div id="title" class="desc">2013.10 豪斯登堡</div>
+        <div id="info" class="desc">千陽號海上行</div>
+        <img id="img" src="sunny.jpg">
+    </div>
+ -->
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>css selector</title>
+    <style type="text/css">
+    
+    /*元素選擇器 or 類型選擇器*/
+    div {
+        font-size: 20px;
+    }
+    
+    /*類別選擇器*/
+    .demo{
+        background-color: #FF9933;
+    }
+    
+    /*ID選擇器*/
+    #reddiv {
+        background-color: #FF0000;
+    }
+    
+    #greendiv {
+        background-color: #00FF00;
+    }
+    
+    #bluediv {
+        background-color: #0000FF;
+    }
+
+    /*子選擇器*/
+    div>div {
+        width: 100px;
+        height: 100px;
+    }
+
+    /*試試看，在bluediv裡面，再加上一個div，看看子選擇器如何套用?*/
+    /*
+      <div id="bluediv">
+        Blue
+        <div style="background-color: #00FF00; margin:10px"> 
+            Blue child
+        </div>
+      </div>
+    */
+
+    /*後裔選擇器*/
+    .demo h3 {
+        color: #0099FF;
+    }
+    
+    /*試試看，多了一個逗號，差別在哪裡？
+         .demo,h3 {
+            color: #0099FF;
+        }   
+    */
+
+    /*試試看，改成加號，差別在哪裡？
+         .demo+h3 {
+            color: #0099FF;
+        }   
+    */
+    
+    </style>
+</head>
+
+<body>
+
+    <h3> div 的 display 區塊為預設值 </h3>
+
+    <div class="demo">
+        <h3> 這裡的標題顏色是？ </h3>
+        <div id="reddiv">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <h3> 這裡的標題顏色是？ </h3>
+
+</body>
+
+</html>

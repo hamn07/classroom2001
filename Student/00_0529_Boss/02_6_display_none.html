@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>display</title>
+    <style type="text/css">
+
+    div {
+        background-color: #FF9933;
+        font-size: 20px;
+    }
+    
+    div>div {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .demo{
+        background-color: #FF9933;
+    }
+
+    #reddiv {
+        background-color: #FF0000;
+    }
+    
+    #greendiv {
+        background-color: #00FF00;
+    }
+    
+    #bluediv {
+        background-color: #0000FF;
+    }
+    </style>
+</head>
+
+<body>
+
+    <h3> display:block 區塊，元素的寬度預設會撐到最大。<span style="font-size:10px;">(紅色區塊在哪裡？)</span></h3>
+    <div class="demo">
+        <div id="reddiv">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <hr>
+
+    <h3> display:none 直譯：沒有東西在這裡</h3>
+    <div class="demo">
+        <div id="reddiv" style="display:none;">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <h3> visibility:hidden 直譯：藏起來</h3>
+    <div class="demo">
+        <div id="reddiv" style="visibility:hidden;">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <h3> visibility:hidden 藏起來的元素，:hover不到</h3>
+
+</body>
+
+</html>

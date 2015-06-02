@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>position</title>
+    <style type="text/css">
+        .demo {
+            background-color: #FF9933;
+        }
+        
+        #reddiv {
+            background-color: #FF0000;
+            width: 200px;
+            height: 200px;
+        }
+        
+        #greendiv {
+            background-color: #00FF00;
+            width: 150px;
+            height: 300px;
+        }
+        
+        #bluediv {
+            background-color: #0000FF;
+            width: 300px;
+            height: 700px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>position：fixed<br> 
+        fixed 沒有設定 top、bottom、left、right時 <br> 
+        "預設" 的位置為 為 扣除【父容器】元素內容 
+    </h3>
+
+    <div class="demo">
+        我是demo div的元素內容。<br>
+        試著在 紅色div 加上 top、bottom、left、right 看看有什麼變化吧!!
+        <div id="reddiv" style="position:fixed;">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv" >Blue</div>
+    </div>
+
+</body>
+
+</html>

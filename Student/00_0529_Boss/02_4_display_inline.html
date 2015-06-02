@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>display</title>
+    <style type="text/css">
+
+    div {
+        background-color: #FF9933;
+        font-size: 20px;
+    }
+    
+    div>div {
+        width: 100px;
+        height: 100px;
+    }
+
+    .demo{
+        background-color: #FF9933;
+    }
+    
+    #reddiv {
+        background-color: #FF0000;
+    }
+    
+    #greendiv {
+        background-color: #00FF00;
+    }
+    
+    #bluediv {
+        background-color: #0000FF;
+    }
+    </style>
+</head>
+
+<body>
+
+    <h3> display:block 區塊，元素的寬度預設會撐到最大。</h3>
+    <div class="demo">
+        <div id="reddiv">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <hr>
+
+    <h3> display:inline 直譯：一行。<br> 試試看，在有顏色的div裡面加上style="display:inline;"</h3>
+    <div class="demo">
+        <div id="reddiv">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <pre>
+    為什麼在div之間有空格？
+        1. 試試看在 demo2的div 加上style="font-size: 0px; letter-spacing: 0px;word-spacing: 0px;"
+        2. 試試看在 綠色的div 裡面加上margin-left: -4px;
+    <pre>
+
+</body>
+
+</html>

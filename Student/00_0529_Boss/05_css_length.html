@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSS Units</title>
+    <style type="text/css">
+    div {
+        background-color: #FF9933;
+    }
+    </style>
+</head>
+
+<body>
+    <h3> css 的單位表示方式 <a href="http://www.w3schools.com/cssref/css_units.asp"> w3school</a> </h3>
+    <hr>
+    <h3>相對單位 <a href="http://pxtoem.com/">px to em 換算表</a> </h3>
+    <p style="font-size:1em">海賊王萬歲!!(這裡是1em，元素字體的高度)</p>
+    <p style="font-size:1rem">海賊王萬歲!!(這裡是1rem，元素字體的高度)</p>
+    <p style="font-size:16px">海賊王萬歲!!(這裡是16px，相對於瀏覽器的解析度)</p>
+    <hr>
+    <p>
+        em不是專有名詞的縮寫，單純指一個大寫字母「M」所佔有的寬度。
+        <br> 在字母裡面，M是最接近滿格的一個。
+        <br>相對於父元素font-size(如body沒有設置，則採用瀏覽器的預設值(16px))的比例。
+        <br> 不過em會巢狀層級而疊加
+    </p>
+    <p>紅色字體為父元素2em疊加，藍色為父元素1em疊加</p>
+    <div style="font-size:2em">
+        <div style="font-size:1em;color:red">測試em</div>
+    </div>
+    <div style="font-size:1em">
+        <div style="font-size:1em;color:blue">測試em</div>
+    </div>
+    <hr>
+    <p>
+        rem：root em，不會隨巢狀層級疊加
+        <br> 以 html 設定的 font-size 為基準計算
+    </p>
+    <div style="font-size:3rem">
+        <div style="font-size:2rem">測試em</div>
+    </div>
+    <hr>
+    <h3>絕對單位：顯示比例不受解析度及瀏覽器設定影響，一般要列印的資料都會用絕對單位。</h3>
+    <p style="font-size:1in">海賊王萬歲!!(1吋)</p>
+    <p style="font-size:2.54cm">海賊王萬歲!!(2.54公分)</p>
+    <p style="font-size:25.4mm">海賊王萬歲!!(25.4公厘)</p>
+    <p style="font-size:6pc">海賊王萬歲!!(6 picas)</p>
+    <p style="font-size:72pt">海賊王萬歲!!(72 points)</p>
+    <p style="font-size:96px">海賊王萬歲!!(96 pixels)</p>
+</body>
+
+</html>

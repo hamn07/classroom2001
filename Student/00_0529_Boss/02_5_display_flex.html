@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>display</title>
+    <style type="text/css">
+
+    div {
+        background-color: #FF9933;
+        font-size: 20px;
+    }
+    
+    div>div {
+        width: 100px;
+        height: 100px;
+    }
+
+    .demo{
+        background-color: #FF9933;
+    }
+    
+    #reddiv {
+        background-color: #FF0000;
+    }
+    
+    #greendiv {
+        background-color: #00FF00;
+    }
+    
+    #bluediv {
+        background-color: #0000FF;
+    }
+    </style>
+</head>
+
+<body>
+
+    <h3> display:block 區塊，元素的寬度預設會撐到最大。<span style="font-size:10px;">(紅色區塊改為預設400px)</span></h3>
+    <div class="demo">
+        <div id="reddiv">Red</div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+    <hr>
+
+    <h3> css3新屬性 → <a href="http://www.w3schools.com/cssref/css3_pr_flex.asp">display:flex 直譯：彎曲、伸縮、折曲。</a><br>
+    試試看，在有顏色的div裡面加上style="flex: 自訂的數值;"</h3>
+    <div class="demo" style="display:flex;">
+        <div id="reddiv" >Red (flex: 3)</div>
+        <div id="greendiv">Green (flex: 2)</div>
+        <div id="bluediv">Blue (flex: 1)</div>
+    </div>
+
+    <hr>
+    
+    <h3> 試試看，flex 的其他屬性(initial;min-width:500px)、auto、none </h3>
+    <div class="demo" style="display:flex;">
+        <div id="reddiv" >Red (flex: initial)</div>
+        <div id="greendiv" >Green (flex: auto)</div>
+        <div id="bluediv" >Blue (flex: none)</div>
+    </div>
+
+</body>
+
+</html>

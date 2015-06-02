@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>position</title>
+    <style type="text/css">
+    .demo {
+        background-color: #FF9933;
+    }
+    
+    #reddiv {
+        background-color: #FF0000;
+        width: 200px;
+        height: 200px;
+    }
+    
+    #greendiv {
+        background-color: #00FF00;
+        width: 150px;
+        height: 300px;
+    }
+    
+    #bluediv {
+        background-color: #0000FF;
+        width: 300px;
+        height: 700px;
+    }
+    </style>
+</head>
+
+<body>
+    <h3>position：relative；如果沒有設定 top、bottom、left、right；表現會和 static 一樣</h3>
+    <h3>relative 相對位置，相對於前一個元素的位置</h3>
+    <h3>下一個元素的起始點，會計算元素為 position: relative 的高度</h3>
+
+    <div class="demo">
+        <div id="reddiv">Red 200*200</div>
+        <div id="greendiv">
+            Green 150*300；
+            <br>position: relative;
+        </div>
+        <div id="bluediv">Blue</div>
+    </div>
+</body>
+
+</html>
