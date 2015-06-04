@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>about jquery mobile</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+    <!-- 這裡是第一頁 -->
+    <div data-role="page" id="p1">
+        <div data-role="header">
+            Form
+        </div>
+
+
+        <!-- 再試著敲敲看通訊錄吧!! -->
+        
+        <!-- 1. 性別欄位 (用 radio) -->
+        <!-- http://www.w3schools.com/jquerymobile/jquerymobile_form_inputs.asp -->
+
+        <!-- 2. 會寫的程式語言 (用 checkbox) -->
+        <!-- http://www.w3schools.com/jquerymobile/jquerymobile_form_inputs.asp -->
+
+        <!-- 3. 居住地 (用 select) (選項只要台北台中就好) -->
+        <!-- http://www.w3schools.com/jquerymobile/jquerymobile_form_select.asp -->
+
+        <div role="main" class="ui-content">
+            <form method="post" action="demoform.asp">
+                <div class="ui-field-contain">
+                    <label for="fullname">姓名:</label>
+                    <input type="text" name="fullname" id="fullname">
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+
+        <div data-role="footer">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+</body>
+
+</html>

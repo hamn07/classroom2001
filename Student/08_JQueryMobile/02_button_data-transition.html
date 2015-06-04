@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>about jquery mobile</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+
+
+    <!-- 這裡是第一頁 -->
+    <div data-role="page" id="p1">
+        <div data-role="header">
+            data-transition
+        </div>
+        <div role="main" class="ui-content">
+            <a class="ui-btn" href="#p2">default</a>
+
+            <!-- 試試看，data-transition的其他效果 -->
+            <!-- w3c：http://www.w3schools.com/jquerymobile/jquerymobile_transitions.asp -->
+
+            <!-- 找找看，要套用哪一個類別，按鈕才會在同一列上面? -->
+            <!-- 提示，在button說明頁面 -->
+
+            <a class="ui-btn" href="#p2" data-transition="slide">slide</a>
+
+
+        </div>
+        <div data-role="footer">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+
+
+    <!-- 這裡是第二頁 -->
+    <div data-role="page" id="p2">
+        <div data-role="header">
+            跳轉過來了!!
+        </div>
+        <div role="main" class="ui-content">
+            <a class="ui-btn" href="#p1">back</a>
+        </div>
+        <div data-role="footer">
+            這是第二頁的腳
+        </div>
+    </div>
+
+
+</body>
+
+</html>

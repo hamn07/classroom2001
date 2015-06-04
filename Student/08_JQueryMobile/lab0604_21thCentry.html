@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>jQuery Mobile Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+    $(document).on("mobileinit", function() {
+        /*
+			apply overrides here
+			example:
+			$.mobile.activeBtnClass = "my-class";
+			*/
+        $.mobile.defaultPageTransition = "slide";
+        $.mobile.buttonMarkup.hoverDelay = 100;
+        $.mobile.pageLoadErrorMessage = "Could not load page";
+    });
+    </script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <style type="text/css">
+    #gd_home {
+        border: 1px solid black;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <section data-role="page" data-transition="slide" id="pg_home">
+        <header data-role="header">
+            <h1>Start Page</h1>
+        </header>
+        <!-- /header -->
+        <article role="main" class="ui-content">
+            <div class="ui-grid-a" id="gd_home">
+                <div class="ui-block-a">
+                    <a href="#pg_search"><img src="http://pixabay.com/static/uploads/photo/2012/04/03/13/11/folders-25133_640.png"></a>
+                </div>
+                <div class="ui-block-b"><img src="http://pixabay.com/static/uploads/photo/2012/04/01/13/08/pen-23410_640.png"></div>
+                <div class="ui-block-a"><img src="http://pixabay.com/static/uploads/photo/2013/07/12/12/30/cogwheel-145804_640.png"></div>
+                <div class="ui-block-b"><img src="http://pixabay.com/static/uploads/photo/2013/07/13/10/27/hand-157251_640.png"></div>
+            </div>
+        </article>
+        <!-- /content -->
+        <footer data-role="footer">
+            <h4>Page footer</h4>
+        </footer>
+        <!-- /footer -->
+    </section>
+    <!-- /page -->
+    <section data-role="page" data-transition="slide" id="pg_search">
+        <header data-role="header" style="overflow:hidden;">
+            <h1>Search</h1>
+            <a href="#pg_home" data-icon="home" class="ui-btn-right">Home</a>
+            <a data-icon="back" class="ui-btn-left" data-rel="back" data-direction="reverse">Back</a>
+            <div data-role="navbar">
+            
+                <ul>
+                
+                    <li><a href="#">One</a></li>
+                
+                    <li><a href="#">Two</a></li>
+                
+                    <li><a href="#">Three</a></li>
+                    </ul>
+                </div>
+            <!-- /navbar -->
+        </header>
+        <!-- /header -->
+        <article role="main" class="ui-content">
+            <form action="" method="get">
+                <label for="type">type</label>
+                <select id="type" data-role="slider">
+                    <option value="rent">rent</option>
+                    <option value="buy" selected="">買</option>
+                </select>
+                <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                    <legend>地區:</legend>
+                    <input type="radio" name="formdata-region" id="taipei" value="" checked="checked">
+                    <label for="taipei">taipei</label>
+                    <input type="radio" name="formdata-region" id="taoyuan" value="taoyuan">
+                    <label for="taoyuan">taoyuan</label>
+                    <input type="radio" name="formdata-region" id="taichung" value="taichung">
+                    <label for="taichung">taichung</label>
+                </fieldset>
+            </form>
+            
+        </article>
+        <!-- /content -->
+        <footer data-role="footer">
+            <h4>Page footer</h4>
+        </footer>
+        <!-- /footer -->
+    </section>
+    <!-- /page -->
+</body>
+
+</html>

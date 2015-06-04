@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <title>JQuery Mobile Boss</title>
+    <style type="text/css">
+    a {
+        text-decoration: none
+    }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li> something about data & class 
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;。
+            <a href="http://www.w3schools.com/tags/att_global_data.asp" target="_blank"> Data Definition and Usage </a> (
+            <a href="http://blog.mitemitreski.com/2012/06/html-5-data-attributes-how-to-use-it.html" target="_blank">英文補充資料</a>、
+            <a href="http://www.hksilicon.com/kb/articles/75645/HTML-5datajquerydata" target="_blank">中文補充資料 1</a>、
+            <a href="http://sincode.blogspot.tw/2014/09/html5-data-data.html" target="_blank">中文補充資料 2</a>)
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;。
+            <a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_data.asp" target="_blank"> jQuery Mobile Data Attributes </a>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;。
+            <a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_css.asp" target="_blank"> jQuery Mobile CSS Classes </a>
+            <br>
+            <hr>
+        </li>
+
+        <li> something about data & class
+            <ul>
+                <li>
+                    <a href="http://www.w3schools.com/tags/att_global_data.asp" target="_blank"> Data Definition and Usage </a> (
+                    <a href="http://blog.mitemitreski.com/2012/06/html-5-data-attributes-how-to-use-it.html" target="_blank">英文補充資料</a>、
+                    <a href="http://www.hksilicon.com/kb/articles/75645/HTML-5datajquerydata" target="_blank">中文補充資料 1</a>、
+                    <a href="http://sincode.blogspot.tw/2014/09/html5-data-data.html" target="_blank">中文補充資料 2</a>)
+                </li>
+                <li>
+                    <a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_data.asp" target="_blank"> jQuery Mobile Data Attributes </a>
+                </li>
+                <li>
+                    <a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_css.asp" target="_blank"> jQuery Mobile CSS Classes </a>
+                </li>
+            </ul>
+            <h5> html：&lt;element data-mykey = "somevalue" &gt;</h5>
+            <h5> javascript：$(this).data("mykey", "somevalue")</h5>
+
+            <!-- 水平排列 -->
+            <div data-role="controlgroup" data-type="horizontal">
+                
+
+
+
+                <a class="ui-btn ui-btn-icon-top ui-icon-arrow-r" href="#" >這是a標籤</a>
+
+
+
+
+                <button data-role="button" data-iconpos="top" data-icon="arrow-r" >這是button標籤 (data)</button>
+
+
+
+
+
+                
+                <button class="ui-btn ui-btn-icon-top ui-icon-arrow-r">這是button標籤 (class)</button>
+
+
+
+
+
+            </div>
+
+            <!-- 水平排列 -->
+			<!-- 
+            <a class="ui-btn ui-btn-icon-top ui-icon-arrow-r ui-btn-inline" href="#">這是a標籤</a>
+            <button data-iconpos="top" data-icon="arrow-r" class="ui-btn-inline">這是button標籤 (data)</button>
+            <button class="ui-btn ui-btn-icon-top ui-icon-arrow-r ui-btn-inline">這是button標籤 (class)</button>
+             -->
+
+            <!-- 垂直排列 (預設) -->
+            <div data-role="controlgroup" data-type="vertical">
+                <a class="ui-btn ui-btn-icon-top ui-icon-arrow-r ui-btn-b" href="#">這是a標籤</a>
+                <button data-iconpos="top" data-icon="arrow-r" data-theme="b">這是button標籤 (data)</button>
+                <button class="ui-btn ui-btn-icon-top ui-icon-arrow-r ui-btn-b">這是button標籤 (class)</button>
+            </div>
+
+            <h6> <a href="http://themeroller.jquerymobile.com/">玩玩看，背景顏色設定</a> </h6>
+            <h6> 試試看，把checkbox和radio改成水平排列 </h6>
+            <h6> 試試看，&lt;button class="ui-btn-inline"&gt; 和 上面排列方法的差異 </h6>
+
+            <hr>
+        </li>
+
+        <li> &lt;div class="ui-field-contain"&gt;
+            <h5>
+            	<a href="http://www.w3schools.com/jquerymobile/jquerymobile_form_basic.asp" target="_blank"> 	
+		            The "ui-field-contain" class style labels and form controls based upon the width of the page. <br>
+		            When the width of the page is greater than 480px, <br>
+		            it automatically place the label on the same line as the form control. <br>
+		            When less than 480px, the label will be placed above the form element. 
+	            </a>
+            </h5>
+            <hr>
+        </li>
+
+        <li> HTML &lt;fieldset&gt; Tag
+            <h5>
+            	<a href="http://www.w3schools.com/tags/tag_fieldset.asp" target="_blank"> 	
+	            	The &lt;fieldset&gt; tag is used to group related elements in a form. <br>
+	            	The &lt;fieldset&gt; tag draws a box around the related elements. <br>
+	            </a>
+            </h5>
+            <hr>
+        </li>
+
+        <li> rel vs data-rel
+            <ul>
+                <li>
+                    <a href="http://www.w3schools.com/tags/tag_link.asp" target="_blank">rel</a>
+                </li>
+                <li>
+                    <a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_data.asp" target="_blank">data-rel</a>
+                </li>
+            </ul>
+            <hr>
+        </li>
+
+        <li> sublime
+            <h5>
+            	<a href="https://packagecontrol.io/packages/jQuery%20Mobile%201.4%20Snippets" target="_blank"> 	
+		            j​Query Mobile 1.​4 Snippets
+		        </a>
+            </h5>
+            <hr>
+        </li>
+
+    </ol>
+</body>
+
+</html>

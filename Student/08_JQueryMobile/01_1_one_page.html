@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>about jquery mobile</title>
+    <!-- 瀏覽器會根據伺服器送過來的 header 或是用其他方法來判定 HTML文件的編碼-->
+    <!-- 但是判定不一定會是正確，所以我們會在 <head> 告訴瀏覽器，這一份HTML文件的編碼是什麼 -->
+    <meta charset="UTF-8">
+
+    <!-- meta：metadata，詮釋資料，data about data，文件相關資訊 -->
+    <meta name="author" content="KathyHsu">
+    <meta name="keywords" content="HTML,CSS,說明文件">
+    <meta name="description" content="這一份文件在說明Jquery Mobile">
+
+    <!-- 為了手機瀏覽器設定的一個標籤 viewport (p17-12)-->
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 看一下data-theme="a"和data-theme="b"的差異 -->
+    <!-- 試試看在 footer 加上 data-position="fixed" -->
+
+    <div data-role="page">
+        <div data-role="header" data-theme="a">
+            線上說明文件
+        </div>
+        <div role="main" class="ui-content">
+            <p><a href="http://demos.jquerymobile.com/1.4.5/" class="ui-btn">JQuery Mobile Demo</a></p>
+            <p><a href="http://www.w3schools.com/jquerymobile/default.asp">w3schools - 導讀</a></p>
+            <p><a href="http://www.w3schools.com/jquerymobile/jquerymobile_ref_data.asp">w3schools - 屬性參考列表</a></p>
+        </div>
+        <div data-role="footer" data-theme="b" data-position="fixed">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+</body>
+
+</html>
