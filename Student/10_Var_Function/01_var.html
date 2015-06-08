@@ -1,0 +1,278 @@
+<!--1. 變數(var)(ch13)-->
+<!--JavaScript屬於動態型別程式碼語言，故無需指定型別-->
+<!--第一次宣告變數的時候需要使用var關鍵字，日後存取變數不須再使用var關鍵字-->
+<!--變數命名三大禁止：以數字開頭、中間有空格、包含@字元-->
+
+<!-- 命名規則：http://www.w3schools.com/js/js_syntax.asp -->
+<!-- overview：http://www.w3schools.com/jsref/default.asp -->
+
+
+<!-- 參考文件：http://windwaterbo-blog.logdown.com/posts/222722-baoge-typescript-combat-development-and-javascript-javascript-basic-beliefs-review -->
+
+
+
+<!-- 1. about var -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>var</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+      // 變數宣告的方式只有一種var；可以先宣告，後才給定值
+      var x ;
+
+      // 在其他的程式裡 (c#)
+      // string str;
+      // int i;
+      // char c;
+      // bool flag;
+
+      // 在其他的程式裡 (vb)
+      // Dim flag As Boolean
+      // Dim i As Integer
+
+      // 變數的型態 (typeof)，是依據等號的右邊給予的，此時的x變數型態是number
+      x = 5;
+
+      // 給值的方式除了固定給，也可以透過介面傳遞，或者讀入HTML元素
+      x = prompt("請輸入數值", "0");
+      x = document.getElementById("input_x").value;
+
+
+      // 變數可以任意改變型別
+      // 所有東西都是物件，除了： 數值(number) 字串(string) 布林(boolean) null undefined 這五個是原始型別(Primitive Type)
+      x = "apple";
+      x = true;
+      x = 3.1415926;
+
+
+      // 單引號和雙引號在JavaScript的世界裡面是一樣的
+      x = 'apple';
+      x = "apple";
+
+      // 變數可以不宣告。
+      y = 7;
+      alert(y);
+
+      // 變數可以一口氣宣告很多個
+      var x, y, z;
+
+
+      // 當變數裡面有單引號或者雙引號時
+      // http://www.w3schools.com/js/js_strings.asp
+      x = "apple";     // output：apple
+      x = "\"apple\""; // output："apple"
+
+      // 還記得HTML裡面的特殊字元吧?
+
+
+      // 變數也可以是物件
+      x = document.getElementById("cbxWord");
+      x = new Date();
+      x = new Array();
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 2. 變數的生命週期 -->
+<!-- 2-1. 跨不同段落的變數-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+    <script>
+      var x = "apple";
+    </script>
+</head>
+
+<body>
+    <script>
+    // 試試看，在這邊用彈跳訊息框 alert 把x呼叫出來
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 2-2. 在function裡面的變數 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+    <script>
+      var x = "apple";
+    </script>
+</head>
+
+<body>
+
+  <button onclick="getX()">click</button>
+
+    <script>
+      function getX()
+      {
+        // 試試看，在這邊用彈跳訊息框 alert 把x呼叫出來
+      }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 2-3. 如果變數名稱相同? -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+    <script>
+      var x = "apple";
+    </script>
+</head>
+
+<body>
+
+  <button onclick="getX()">click</button>
+
+    <script>
+      function getX()
+      {
+        var x = "onepiece";
+
+        // 試試看，在這邊用彈跳訊息框 alert 把x呼叫出來
+      }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 2-4. 如果無論如何都要用到apple? -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+    <script>
+      var x = "apple";
+    </script>
+</head>
+
+<body>
+
+  <button onclick="getX()">click</button>
+
+    <script>
+      function getX()
+      {
+        var x = "onepiece";
+
+        // windows
+      }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- 2-5. 區域變數 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+</head>
+
+<body>
+
+  <button onclick="setY()">設定y值</button>
+
+  <button onclick="getY()">取得y值</button>
+
+    <script>
+      function setY()
+      {
+        // 試試看，在這邊宣告一個變數y，初始值為onepiece
+      }
+
+      function getY()
+      {
+        // 試試看，在這邊用彈跳訊息框 alert 把y呼叫出來
+      }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 2-6. 區域變數? -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+</head>
+
+<body>
+
+  <button onclick="setY()">設定y值</button>
+
+  <button onclick="getY()">取得y值</button>
+
+    <script>
+      function setY()
+      {
+        // 這樣的y是什麼???
+        y = "onepiece";
+      }
+
+      function getY()
+      {
+        alert(y);
+      }
+    </script>
+</body>
+
+</html>
+

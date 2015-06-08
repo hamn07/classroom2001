@@ -1,0 +1,246 @@
+<!-- 陣列(array) -->
+<!-- http://www.w3schools.com/js/js_arrays.asp -->
+<!-- http://www.w3schools.com/js/js_array_methods.asp -->
+
+
+
+
+
+<!-- 1. 為什麼要用陣列：利用索引值（Index）可以快速的存取資料 + 程式碼簡化 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        // 底下變數名稱相同，只是為了說明用!!
+        var onepiece = new Array(8);
+        onepiece[0] = "魯夫";
+        onepiece[1] = "索隆";
+        onepiece[2] = "娜美";
+        onepiece[3] = "騙人布";
+        onepiece[4] = "香吉士";
+        onepiece[5] = "喬巴";
+        onepiece[6] = "羅賓";
+        onepiece[7] = "布魯克";
+        onepiece[8] = "佛朗基";
+
+        var onepiece = new Array();
+        onepiece[0] = "魯夫";
+        onepiece[1] = "索隆";
+        onepiece[2] = "娜美";
+        onepiece[3] = "騙人布";
+        onepiece[4] = "香吉士";
+        onepiece[5] = "喬巴";
+        onepiece[6] = "羅賓";
+        onepiece[7] = "布魯克";
+        onepiece[8] = "佛朗基";
+
+        var onepiece = new Array("魯夫", "索隆", "娜美", "騙人布", "香吉士", "喬巴", "羅賓", "布魯克", "佛朗基");
+
+        var onepiece = ["魯夫", "索隆", "娜美", "騙人布", "香吉士", "喬巴", "羅賓", "布魯克", "佛朗基"];
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 2. valueOf()、toString()、join("x")-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        var onepiece = ["魯夫", "索隆", "娜美", "騙人布", "香吉士", "喬巴", "羅賓", "布魯克", "佛朗基"];
+
+        // 把陣列裡面的元素用 document.write顯示在畫面上看看
+
+        // 試試看， 陣列.valueOf()、陣列.toString()、陣列.join("一個符號")
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 3. 陣列裡面的型態可以不固定 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = new Array(2);
+        obj[0] = "魯夫";
+        obj[1] = "橡膠果實";
+        obj[2] = 1000000;
+
+        document.write(onepiece.toString());
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4. 宣告後加入、移除陣列item的方法-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        var obj = new Array(2);
+        obj[0] = "魯夫";
+        obj[1] = "橡膠果實";
+        obj[2] = 1000000;
+
+        document.write("陣列長度為" + obj.length + "<br>");
+        document.write(obj.toString());
+
+
+        document.write("<hr>");
+
+        // 現在我想加入元素，有哪些方法? *3
+        
+        // 移除第一個元素
+
+        // 移除最後一個元素
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 5. sort() + reverse() -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        var lotto = ["37", "13", "25", "06", "18", "30"];
+
+        document.write(lotto.valueOf());
+
+        document.write("<hr>");
+
+        // 試試看， 陣列.sort()、陣列.reverse()
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 6. 二維陣列 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        // 三個人的國英數史地成績
+        var mary = [100, 100, 50, 88, 76];
+        var john = [88, 75, 80, 95, 90];
+        var emma = [90, 92, 88, 77, 96];
+
+        // 陣列裡面再一個陣列
+        var classScore = new Array(3);
+        classScore[0] = new Array(6);
+        classScore[1] = new Array(6);
+        classScore[2] = new Array(6);
+
+        // 試著把mary的成績放上去吧
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 7. Objects use names to access its "members". -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        // 成績表
+        var mary = {chinese:100, english:100, math:50, history:88, geography:76};
+
+        document.write(mary["chinese"]);
+
+        document.write("<hr>");
+
+        document.write(mary[0]);
+    </script>
+
+</body>
+
+</html>

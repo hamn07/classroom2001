@@ -1,74 +1,24 @@
-<!--4. 滑鼠移動的時候，顯示說明文字-->
-<!--為什麼滑鼠移到圖片的附近就會有文字？預設大小-->
-<!--為什麼文字和邊框有距離？→ Go to 5-->
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-    <title> HTML - part2 - Image And Media </title>
-    <style type="text/css">
-    img {
-        width: 30%;
-        height: 30%;
-        opacity: 1;
-        z-index: 1;
+    <title>jQuery Mobile Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    function ShowMsg() {
+        var firstName = prompt("firstName");
+        var lastName = prompt("lastName");
+        alert("hi! " + firstName + " " + lastName);
     }
-    
-    .group {
-        position: relative;
-    }
-    
-    .desc {
-        top: 2px;
-        left: 20px;
-        position: absolute;
-        visibility: visible;
-        z-index: -1;
-    }
-
-    img:hover {
-        opacity   : 0.8;
-
-    }
-
-/*    img:hover .desc{
-        visibility: visible;
-    }*/
-
-
-    </style>
+    </script>
+    <script type="text/javascript">
+    ShowMsg();
+    </script>
 </head>
 
 <body>
-    <article>
-        <hgroup>
-            我的日本縱貫旅行~日本好好玩!!
-        </hgroup>
 
-        <section>
-            <h1>豪斯登堡</h1>
-
-            <div class="group">
-                <img src="./Student/02_Image_Media/huistenbosch1.jpg">
-                <h3 class="desc">千陽號在動啊!!!!!</h3>
-            </div>
-
-            <img src="./Student/02_Image_Media/huistenbosch2.jpg">
-            <p>看到千陽號在海上航行是一件很感人的事情。</p>
-            
-        </section>
-
-        <section>
-            <h1>宮島</h1>
-            <img src="itsukushima1.jpg">
-            <img src="itsukushima2.jpg">
-            <p>海中鳥居很厲害~</p>
-            <p>很多鹿，鹿的毛其實刺刺的一點也不好摸 XD</p>
-        </section>
-    </article>
-    <footer>
-        我是作者，這是版本v2.0
-    </footer>
 </body>
 
 </html>

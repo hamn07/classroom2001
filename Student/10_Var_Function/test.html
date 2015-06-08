@@ -1,0 +1,27 @@
+<!-- 2-4. 如果無論如何都要用到apple? -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>scope</title>
+    <script>
+      var x = "apple";
+    </script>
+</head>
+
+<body>
+
+  <button onclick="getX()">click</button>
+
+    <script>
+      function getX()
+      {
+        var x = "onepiece";
+        alert(window.x);
+
+        // windows
+      }
+    </script>
+</body>
+
+</html>

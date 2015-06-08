@@ -1,0 +1,37 @@
+<!--1. 變數(var)、運算子 (ch13)-->
+<!--JavaScript屬於動態型別程式碼語言，故無需指定型別-->
+<!--第一次宣告變數的時候需要使用var關鍵字，日後存取變數不須再使用var關鍵字-->
+<!--變數命名三大禁止：以數字開頭、中間有空格、包含@字元-->
+<!-- 加法 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <script type="text/javascript">
+    function checkResult() {
+        var input_x = document.getElementById("input_x");
+        var input_y = document.getElementById("input_y");
+        var input_result = parseInt(input_x.value) + parseInt(input_y.value);
+        document.getElementById("input_result").value = input_result;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- 複習已經練習過的部分 目標 x + y = result -->
+    <!-- 1. 一個文字輸入方框，id命名為input_x，value初始為5 -->
+    <!-- 2. 一個文字輸入方框，id命名為input_y，value初始為3 -->
+    <!-- 3. 一個文字輸入方框，id命名為input_result -->
+    <!-- 4. 一個按鈕，點選時呼叫 checkResult() 函式 -->
+    <!-- 5. checkResult() 函式內 透過 document.....取得input_x和input_y，計算結果後顯示出來 -->
+    <input type="text" id="input_x" value="5">+
+    <input type="text" id="input_y" value="3">=
+    <input type="text" id="input_result">
+    <button onclick="checkResult()">calculate</button>
+</body>
+
+</html>
+<!-- 如何判斷結果是否正確？ 流程控制 （p14-3) -->
+<!-- 6. 答對的時候出現訊息 "答對了!!" ， 否則出現 "再重新算算吧!!"-->
+<!-- 7. 把四則運算完成看看吧！！ -->

@@ -1,0 +1,252 @@
+<!--1. Java vs JavaScript & others-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <style type="text/css">
+    body {
+        font-size: 2em;
+    }
+    </style>
+</head>
+
+<body>
+    Java和JavaScript不同
+    <ul>
+        <li>Java是Sun的產品；JavaScript是Netscape的產品 ps. JScript</li>
+        <li>Java必須經過編譯；JavaScript不須編譯，從瀏覽器解譯執行</li>
+        <li>Java是強型態變數語言(大部分的語言都是)，JavaScript是弱型態</li>
+        <li>Java變數必須宣告才可以使用，JavaScript變數沒有宣告就可使用</li>
+    </ul>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 2. what JavaScript can do -->
+<!-- 2-1. change HTML Content -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change HTML Content</title>
+</head>
+
+<body>
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <button onclick="changeMsg()">Click Me!</button>
+
+    <script type="text/javascript">
+    function changeMsg()
+    {
+        document.getElementById('demo').innerHTML = 'GoGo OnePiece!!';
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 2-2. Change HTML Attributes -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change HTML Attributes</title>
+</head>
+
+<body>
+
+    <p>點選圖片變化人物~</p>
+
+    <img id="imgOP" onclick="changeImage()" src="../05_Table/img/01.jpg">
+
+    <script type="text/javascript">
+    function changeImage() {
+        var image = document.getElementById('imgOP');
+
+        if (image.src.match("01")) {
+            image.src = "../05_Table/img/09.jpg";
+        } else {
+            image.src = "../05_Table/img/01.jpg";
+        }
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 2-3. Change HTML Styles (CSS) -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change HTML Attributes</title>
+</head>
+
+<body>
+    <p>點選圖片放大人物~</p>
+    <img id="imgOP" onclick="changeImage()" src="../05_Table/img/01.jpg">
+
+    <script>
+    function changeImage() {
+        var image = document.getElementById('imgOP');
+
+        image.style.width = "330px";
+        image.style.height = "500px" ;
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 2-4. add HTML element -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change HTML Attributes</title>
+</head>
+
+<body>
+    <p>點選圖片增加說明文字</p>
+    <img id="imgOP" onclick="changeImage()" src="../05_Table/img/01.jpg">
+    
+    <script>
+    // createElement 增加一個元素 (div)
+
+    // createTextNode 新增一串文字
+
+    // appendChild 將文字附加到div去
+
+    // 在誰的附近增加這個元素，得要先取得那一個元素
+    
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 3. put javaScript in <head> or <body> -->
+<!-- 3-1. no function -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>head or body</title>
+    <script>
+        // var p = document.getElementById('pJuly');
+        // p.style.fontSize = "5em";
+        // p.style.color = "blue";
+    </script>
+</head>
+
+<body>
+    <p id="pJuly">七月的日本有花火節。</p>
+    <script>
+        // var p = document.getElementById('pJuly');
+        // p.style.fontSize = "3em";
+        // p.style.color = "red";
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 3-2. 這個例子挖了個洞，有錯 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>head or body</title>
+    <script>
+    function changeBlue() {
+        var p = document.getElementById('pJuly');
+        p.style.fontSize = "10em";
+        p.style.color = "blue";
+    }
+    </script>
+</head>
+
+<body>
+    <p id="pJuly" onclick="changeBlue()">七月的日本有花火節。</p>
+
+    <p id="pAugust" onclick="changeBlue()">八月的日本還是在花火節。</p>
+    
+    <script>
+    function changeBlue() {
+        var p = document.getElementById('pAugust');
+        p.style.fontSize = "3em";
+        p.style.color = "blue";
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 4. JavaScript Output -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>head or body</title>
+</head>
+
+<body>
+    <script>
+        alert("alert 出現了");
+        document.write("document(html文件)裡面寫著");
+        console.log("console瀏覽器的開發人員選項");
+    </script>
+</body>
+
+</html>
+
+
+

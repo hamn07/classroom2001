@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>about jquery mobile</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+    <!-- 這裡是第一頁 -->
+    <div data-role="page" id="p1">
+        <div data-role="header">
+            panel
+        </div>
+        <!-- panel -->
+        <div data-role="panel" id="prPanel" data-position="right" data-display="push">
+            <h2>Panel Header</h2>
+            <p>我從右邊滑開，然後push panel和reveal panel哪裡不一樣?</p>
+        </div>
+        <div data-role="panel" id="plPanel" data-position="left" data-display="push">
+            <h2>Panel Header</h2>
+            <p>我從左邊滑開，然後push panel和reveal panel哪裡不一樣?</p>
+        </div>
+        <div data-role="panel" id="orPanel" data-position="right" data-display="overlay">
+            <h2>Panel Header</h2>
+            <p>我從右邊滑開，然後會蓋到人家</p>
+        </div>
+        <div data-role="panel" id="olPanel" data-position="left" data-display="overlay">
+            <h2>Panel Header</h2>
+            <p>我從左邊滑開，然後會蓋到人家</p>
+        </div>
+        <div data-role="panel" id="rrPanel" data-position="right" data-display="reveal">
+            <h2>Panel Header</h2>
+            <p>我從右邊滑開，然後push panel和reveal panel哪裡不一樣?</p>
+        </div>
+        <div data-role="panel" id="rlPanel" data-position="left" data-display="reveal">
+            <h2>Panel Header</h2>
+            <p>我從左邊滑開，然後push panel和reveal panel哪裡不一樣?</p>
+        </div>
+        <!-- http://www.bloggerever.com/2014/12/push-reveal-and-overlay-panel-using.html -->
+        <!-- content -->
+        <div data-role="main" class="ui-content">
+            <p>Click on the button below to open the Panel.</p>
+            <!-- class：按鈕、在一列裡面、邊框圓角、邊框陰影、按鈕在右、按鈕圖案 -->
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#plPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-icon-left ui-icon-arrow-l">push Panel</a></div>
+                <div class="ui-block-b"><a href="#prPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-icon-right ui-icon-arrow-r">push Panel</a>
+                </div>
+                <div class="ui-block-a"><a href="#olPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-icon-left ui-icon-arrow-l">overlay Panel</a></div>
+                <div class="ui-block-b"> <a href="#orPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-icon-right ui-icon-arrow-r">overlay Panel</a></div>
+                <div class="ui-block-a"><a href="#rlPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-icon-left ui-icon-arrow-l">reveal Panel</a></div>
+                <div class="ui-block-b"> <a href="#rrPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-icon-right ui-icon-arrow-r">reveal Panel</a></div>
+            </div>
+        </div>
+        <div data-role="footer">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+</body>
+
+</html>

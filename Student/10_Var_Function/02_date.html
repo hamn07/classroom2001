@@ -1,0 +1,195 @@
+<!-- 時間物件(Date) -->
+<!-- http://www.w3schools.com/js/js_dates.asp -->
+<!-- http://www.w3schools.com/js/js_date_formats.asp -->
+<!-- http://www.w3schools.com/js/js_date_methods.asp -->
+
+
+<!-- Date objects are created with the new Date() constructor. -->
+<!-- new Date() -->
+<!-- new Date(milliseconds) -->
+<!-- new Date(dateString) -->
+<!-- new Date(year, month, day, hours, minutes, seconds, milliseconds) -->
+
+
+
+
+
+
+<!-- 1. 先呼叫出來看看結果 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showSysDate()">點選後出現時間</button>
+
+    <p id="pDate">這裡會顯示系統時間</p>
+
+    <script>
+    function showSysDate() {
+        // 宣告一個時間物件
+        var d = new Date();
+        
+        document.getElementById("pDate").innerHTML = d;
+    }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 2. 時間物件的格式 -->
+<!-- 看看w3c怎麼說：http://www.w3schools.com/js/js_date_methods.asp -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        var d = new Date();
+
+        // 要不要試試看換行符號?
+        
+        // 試著從 w3c 找到 2015.06.08 星期一 09:00
+
+        // 取得年份是哪一個 2015
+
+        // 取得月份是哪一個 06 (這裡長的好奇怪啊!!)
+        
+        // 取得日期是哪一個 08
+
+        // 取得星期是哪一個 星期一 (這裡也長的好奇怪啊!!)
+
+        // 取得時間是哪一個
+
+         // 取得分鐘是哪一個
+    </script>
+    
+</body>
+
+
+
+
+
+
+
+
+<!-- 3. 宣告一個日期的物件 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showSysDate()">點選後出現時間</button>
+
+    <p id="pDate">這裡會顯示系統時間</p>
+
+    <script>
+    function showSysDate() {
+        // 指定一個日期
+        var d = new Date("2015/6/1");
+        // var d = new Date("6/1/2015");
+        // var d = new Date("6-1-2015");
+        
+        document.getElementById("pDate").innerHTML = d;
+    }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4. 日期相減 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        // 指定一個日期
+        var firstDate = new Date("2015/6/1");
+        var secondDate = new Date("2015/6/8");
+
+        var diff = secondDate - firstDate;
+
+        // millisecond
+        document.write(diff + "<br>");
+
+        // 86400000 = 1000*60*60*24
+        diff = diff / (1000*60*60*24);
+        document.write(diff + "<br>");
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 5. 加一個月、加一天 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        var d = new Date();
+
+        // 加一天
+        d.setDate(d.getDate()+1);
+        document.write(d + "<br>");
+
+        // 加一個月
+        d.setMonth(d.getMonth()+1);
+        document.write(d + "<br>");
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 6. 怎麼樣取得某個月的最後一天? -->
+
+
+

@@ -6,25 +6,188 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 
 <body>
-    <!-- 這裡是第一頁 -->
-    <div data-role="page" id="p1">
-        <div data-role="header">
+    <!-- p0 -->
+    <div data-role="page" id="p0" class="ui-page-theme-z">
+        <div data-role="header" style="text-align: center;">
             listview
         </div>
-
-
         <!-- listview -->
-    
         <div role="main" class="ui-content">
-            <!-- 到w3c找找看listview的用法 -->
-            <!-- 試試看自己動手，看看listview是怎麼使用的吧 -->
+            <a class="ui-btn ui-btn-inline" href="#p1">廟東必吃</a>
+            <a class="ui-btn ui-btn-inline" href="#p2">IKEA想吃</a>
+            <a class="ui-btn ui-btn-inline" href="#p3">台北好吃</a>
+            <a class="ui-btn ui-btn-inline" href="#p4">北海道好吃</a>
+            <a class="ui-btn ui-btn-inline" href="#p5">大樂透開獎號碼</a>
+            <a class="ui-btn ui-btn-inline" href="#p6">搜尋早餐</a>
+            <a class="ui-btn ui-btn-inline" href="#p7">海賊清單</a>
         </div>
-
-
-        <div data-role="footer">
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p1 -->
+    <div data-role="page" id="p1">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2>廟東必吃:(只有listview，是平面的)</h2>
+            <ul data-role="listview">
+                <li>蚵仔煎</li>
+                <li>蝦仁肉圓</li>
+                <li>菱角酥</li>
+                <li>鳳梨冰</li>
+                <li><a class="ui-btn" data-rel="back">回首頁</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p2 -->
+    <div data-role="page" id="p2">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2>IKEA想吃:(li多了超連結包起來)</h2>
+            <ul data-role="listview">
+                <li><a href="#">牛肉丸</a></li>
+                <li><a href="#">10元冰淇淋</a></li>
+                <li><a class="ui-btn" data-rel="back">回首頁</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p3 -->
+    <div data-role="page" id="p3">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2>台北好吃:(data-inset="true")</h2>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#">薄多義</a></li>
+                <li><a href="#">鯊魚咬吐司</a></li>
+                <li><a class="ui-btn" data-rel="back">回首頁</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p4 -->
+    <div data-role="page" id="p4">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2>北海道好吃:(li：data-role="list-divider")</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">小樽</li>
+                <li><a href="#">北一哨子館</a></li>
+                <li><a href="#">路邊哈密瓜</a></li>
+                <li data-role="list-divider">函館</li>
+                <li><a href="#">函館市場</a></li>
+                <li><a href="#">小丑漢堡</a></li>
+                <li data-role="list-divider">帶廣</li>
+                <li><a href="#">豬排飯</a></li>
+                <li><a class="ui-btn" data-rel="back">回首頁</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p5 -->
+    <div data-role="page" id="p5">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2>大樂透開獎號碼:(data-autodividers="true")</h2>
+            <ul data-role="listview" data-inset="true" data-autodividers="true">
+                <li><a href="#">01</a></li>
+                <li><a href="#">03</a></li>
+                <li><a href="#">06</a></li>
+                <li><a href="#">11</a></li>
+                <li><a href="#">20</a></li>
+                <li><a href="#">38</a></li>
+                <li><a class="ui-btn" data-rel="back">回首頁</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p6 -->
+    <div data-role="page" id="p6">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2 id="list-filter">搜尋早餐：(data-filter="true")</h2>
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="搜尋水果..." data-inset="true">
+                <li><a href="#">摩斯漢堡</a></li>
+                <li><a href="#">阿根早餐</a></li>
+                <li><a href="#">麥味登</a></li>
+                <li><a href="#">肉蛋吐司</a></li>
+                <li><a href="#">A-bow</a></li>
+                <li><a href="#">Apple203</a></li>
+                <li><a href="#">麥當勞</a></li>
+                <a class="ui-btn" data-rel="back">回首頁</a>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+    <!-- p7 -->
+    <div data-role="page" id="p7">
+        <div data-role="header" style="text-align: center;">
+            listview
+        </div>
+        <!-- listview -->
+        <div data-role="main" class="ui-content">
+            <h2>海賊清單：</h2>
+            <ul data-role="listview" data-inset="true">
+                <li style="text-align: center;">
+                    <a href="#">
+                        <img src="../05_Table/img/01.jpg">
+                        <h2>魯夫</h2>
+                        <p>船長，伸縮自如的橡膠槍。</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../05_Table/img/02.jpg">
+                        <h2>索隆</h2>
+                        <p>大劍客，三刀流。</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../05_Table/img/03.jpg">
+                        <h2>娜美</h2>
+                        <p>航海士，橘子樹</p>
+                    </a>
+                </li>
+                <li><a class="ui-btn" data-rel="back">回首頁</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: center;">
             Copyright © 海賊萬歲
         </div>
     </div>

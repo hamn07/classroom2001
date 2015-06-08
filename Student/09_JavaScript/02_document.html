@@ -1,0 +1,90 @@
+<!--1. DOM (Document Object Model) (p16-16)-->
+<!--http://www.w3schools.com/js/js_htmldom.asp-->
+<!--階層式的物件模型 -->
+<!--瀏覽器讀入一份HTML文件時，就會根據此HTML文件的內容來建立相關的文件物件模型 -->
+<!--DOM 屬於 JavaScript 的介面標準，各種瀏覽器如 Firefox 、 Chrome 、 Opera 、 Safari 與 IE 等都依此標準建置實際的物件，使 JavaScript 程式可以直接利用。 -->
+
+
+
+
+
+
+<!-- 2. 抓取Html裡面的元素 -->
+<html>
+
+<head>
+    <title> JavaScript</title>
+</head>
+
+<body>
+    <div id="appleID"  class="fruit">Hello Apple</div>
+    <div id="bananaID" class="fruit">Hello Banana</div>
+    <div id="orangeID" class="fruit">No Orange</div>
+    <div style="font-size: 20px">以上是水果種類</div>
+
+    <button onclick="getApple()">取得 "Apple" </button>
+
+
+
+    <!-- 試試看，再加入兩個button，取得bananaID、orangeID -->
+
+
+
+    <script type="text/javascript">
+
+    function getApple() {
+
+        var value = "回傳蘋果html內的文字";
+
+        alert(value);
+    }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 3. 抓取Html裡面的元素 (p16-20) -->
+<html>
+
+<head>
+    <title> JavaScript</title>
+</head>
+
+<body>
+
+
+    <label>使用過那些軟體(多選)：</label>
+    <input type="checkbox" id="cbxWord" name="software" value="word">
+    <label for="word">Word</label>
+    <input type="checkbox" id="cbxExcel" name="software" value="excel">
+    <label for="excel">Excel</label>
+    <input type="checkbox" id="cbxPpt" name="software" value="ppt">
+    <label for="ppt">Word</label>
+    <input type="checkbox" id="cbxVB" name="software" value="vb">
+    <label for="vb">Visual Basic 2013</label>
+
+
+    <button onclick="showCheckboxValue()"> 取得Checkbox元素 </button>
+
+
+    <script type="text/javascript">
+    function getApple() {
+
+        var objWord = document.getElementById("cbxWord");
+
+        var objNameGroup= document.getElementsByName("software");
+
+        var objTagGroup = document.getElementsByTagName("input");
+    }
+    </script>
+</body>
+
+</html>

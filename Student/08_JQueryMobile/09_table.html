@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>about jquery mobile</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+    <!-- 這裡是第一頁 -->
+    <div data-role="page" id="p1">
+        <div data-role="header">
+            table
+        </div>
+        <!-- table -->
+        <div data-role="main" class="ui-content">
+            <h2>table</h2>
+            <table data-role="table" data-mode="columntoggle" class="ui-responsive" data-column-btn-text="data-column-btn-text 屬性可以設定說明文字">
+                <thead>
+                    <tr>
+                        <th data-priority="6">教室代號</th>
+                        <th>教室名稱</th>
+                        <th data-priority="1">課程代號</th>
+                        <th data-priority="2">課程名稱</th>
+                        <th data-priority="3">班級人數</th>
+                        <th data-priority="4">上課時數</th>
+                        <th data-priority="1">班代</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2001</td>
+                        <td>左邊那間教室</td>
+                        <td>MESA02</td>
+                        <td>Android軟硬整合</td>
+                        <td>20</td>
+                        <td>348</td>
+                        <td>葉同學</td>
+                    </tr>
+                    <tr>
+                        <td>2002</td>
+                        <td>中間那間教室</td>
+                        <td>MSIT103</td>
+                        <td>.Net雲端服務</td>
+                        <td>11</td>
+                        <td>608</td>
+                        <td>徐同學</td>
+                    </tr>
+                    <tr>
+                        <td>2003</td>
+                        <td>右邊那間教室</td>
+                        <td>SEA64</td>
+                        <td>網路工程</td>
+                        <td>12</td>
+                        <td>485</td>
+                        <td>曾同學</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div data-role="footer">
+            Copyright © 海賊萬歲
+        </div>
+    </div>
+</body>
+
+</html>

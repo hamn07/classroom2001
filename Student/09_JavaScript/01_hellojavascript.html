@@ -1,0 +1,348 @@
+<!--1. Hello JavaScript-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        alert("Hello JavaScript!!!");
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--2. use button say Hello JavaScript (p15-2、p15-3)-->
+<!-- w3c：事件清單http://www.w3schools.com/js/js_events.asp -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">點我會提示訊息喔!!(function)</button>
+
+
+    <!-- 試試看，這個按鈕按下去的結果是? -->
+	<!-- <button onclick="javascript:alert('Hello JavaScript!!! onepiece')">點我會提示訊息喔!!(inline)</button>	 -->
+
+
+    <script type="text/javascript">
+    function showMessage() {
+        alert("Hello JavaScript!!!");
+    }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--3. input and show (p15-2)-->
+<!-- 3-1 var -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">點我印出Apple!!</button>
+
+    <script type="text/javascript">
+
+    function showMessage() {
+
+        var name = "Apple";
+
+        alert(name);
+    }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 3-2 prompt -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">點我提示輸入文字，然後顯示!!</button>
+
+    <script type="text/javascript">
+
+    function showMessage() {
+
+        var name = prompt("請輸入名字", "Apple");
+
+        alert(name);
+    }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!--4. input and show -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">點我提示輸入文字，然後顯示!!</button>
+
+    <script type="text/javascript">
+
+    function showMessage() {
+
+        // 試試看，宣告兩個變數【lastname、firstname】，接收兩個prompt【"請輸入姓氏"、"請輸入名字"】
+        // 再宣告一個變數【name】，把【lastname、firstname】組合起來 (+);
+        // 最後用alert把【name】印出來
+
+    }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--5. input and show - error!! -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">加法運算</button>
+
+    <script type="text/javascript">
+
+    function showMessage() {
+
+        // 試試看，宣告兩個變數【x、y】，接收兩個prompt【"加法運算，請輸入x"、"加法運算，請輸入y"】
+        // 再宣告一個變數【result】，把【x、y】相加的結果放到【result】 (+);
+        // 最後用alert把【result】印出來
+
+    }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 6. why? -->
+<!--數值：NaN、Infinity、-Infinity-->
+<!--變數：null、undefined-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML - part5 - JavaScript</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // // 1. 給變數初始值，然後看看變數存放了什麼結果？
+        // var myobj = "apple";
+        // alert(myobj);
+
+        // // 2. 看看這時候的fruit變數是什麼類型
+        // alert(typeof myobj);
+
+        // // 3. 改變變數內容，再看看變數這次存放了什麼？
+        // myobj = 75;
+
+        // // 4. 這時候的fruit變數是什麼類型
+
+        // // 5. 當myobj設定為true的時候
+        // myobj = true;
+
+        // // 6. 透過算數運算子(+)計算運算元後，把值搬給變數
+        // myobj = 7 + 5;
+
+        // // hit：變數除了固定給值，也可以放入運算子的運算結果
+
+        // // 7. 透過算數運算子(/)計算運算元後，把值搬給變數
+        // myobj = 7 / 5;
+
+        // // 8. 不當數值運算，會得到"NaN結果"
+        // myobj = 7 / "apple";
+
+        // // 9. 正無限大，會得到"Infinity結果"
+        // myobj = 1 / 0;
+
+
+        // // 10. 負無限大，會得到"-Infinity結果"
+        // myobj = -1 / 0;
+
+        // // 11. 有宣告變數，但沒有給定初始值，會得到undefined (沒有物件)
+        // var obj;
+
+        // // 12. 將變數設定為null (沒有值)
+        // obj = null;
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 7. input and show - parseInt()、parseFloat() 與 Number() -->
+<!-- http://www.w3schools.com/jsref/jsref_obj_global.asp -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">加法運算</button>
+
+    <script type="text/javascript">
+
+    function showMessage() {
+
+        // 延續上一題
+        // 試試看，透過parseInt()函式，把變數x，轉型成數值
+        // 試試看，透過parseInt()函式，把變數y，轉型成數值
+        // 在把轉型後的 x 和 y 相加
+        // 最後用alert把【result】印出來
+
+    }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!--8. try it - parseInt()、parseFloat() 與 Number() -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">加法運算</button>
+
+    <script type="text/javascript">
+
+    function showMessage() {
+
+        // 試著把下面函數與值列出來，比較看看結果
+
+        // parseInt(true);               // NaN
+        // parseInt(false);              // NaN
+        // parseInt("20");               // 20
+        // parseInt("30.00");            // 30
+        // parseInt("10.68");          
+        // parseInt("12 22 32");       
+        // parseInt("        80   ");  
+        // parseInt("378abc");         
+        // parseInt("abc378");         
+                                                      
+        // parseFloat(true);           
+        // parseFloat(false);          
+        // parseFloat("20");           
+        // parseFloat("30.00");        
+        // parseFloat("10.68");        
+        // parseFloat("12 22 32");     
+        // parseFloat("        80   ");
+        // parseFloat("378abc");       
+        // parseFloat("abc378");       
+                                    
+                                    
+        // Number(true);               
+        // Number(false);              
+        // Number("20");               
+        // Number("30.00");            
+        // Number("10.68");            
+        // Number("12 22 32");         
+        // Number("        80   ");    
+        // Number("378abc");           
+        // Number("abc378");           
+     
+        var result = parseInt(true);  
+
+        alert(result);
+    }
+
+    </script>
+
+</body>
+
+</html>
