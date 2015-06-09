@@ -5,19 +5,30 @@
     <title></title>
     <style>
     .galleria {
-        width: 700px;
-        height: 400px;
+        /*width: 700px;*/
+        /*height: 500px;*/
+        
         background: #000
     }
     </style>
-    <!-- import jQuery -->
+    <!-- load jQuery -->
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!-- import galleria -->
+    <!-- load galleria -->
     <script src="galleria/galleria-1.4.2.min.js"></script>
+    <!-- my scripts below -->
     <script type="text/javascript">
     $(document).ready(function() {
 
+        // 設定theme並fire galleria instance
+        // Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+        Galleria.loadTheme('galleria/themes/azur/galleria.azur.min.js');
+        Galleria.run('#imgFrame', {
+            transition: 'fade',
+            height: 500,
+            autoplay: 7000
+        });
 
+        // 設定type為file的input
         var fileElem = document.getElementById("fileElem");
         fileElem.addEventListener("change", function(e) {
             // 檔案(array)
@@ -44,6 +55,7 @@
             galleria.push(data);
         }, false);
 
+        // 設定開啟檔案的連結
         var fileSelect = document.getElementById("fileSelect");
         fileSelect.addEventListener("click", function(e) {
             if (fileElem) {
@@ -53,17 +65,13 @@
         }, false);
     });
 
-    function InitPage() {
-
-        Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
-        Galleria.run('#imgFrame');
-    }
+    function InitPage() {}
     </script>
 </head>
 
 <body onload="InitPage()">
     <!-- image frame -->
-    <div id="imgFrame" class="galleria"><img src="./Lake-Tekapo.jpg"></div>
+    <div id="imgFrame" class="galleria"><img src="http://mvymca.org/sites/default/files/pictures/Kids.jpg"></div>
     <!-- 開啟檔案的連結 -->
     <a href="#" id="fileSelect">Select some files</a>
     <!-- type為file的input，美觀原因將之hidden起來 -->
