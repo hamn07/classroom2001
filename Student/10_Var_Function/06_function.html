@@ -1,0 +1,237 @@
+<!-- 函式(function) -->
+<!-- http://www.w3schools.com/js/js_functions.asp -->
+
+
+
+
+<!-- 將功能獨立出來，提高程式的可用性-->
+
+
+
+
+
+<!-- 在其他語言裡面你會看到的function -->
+<!-- c#：public int myCalculate(int x, int y) -->
+<!-- vb：Function myCalculate(ByVal x As Integer, ByVal y As Integer) As Integer -->
+
+
+
+
+<!-- 1. 複習一下我們之前用過的function -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <button onclick="showMessage()">點我會提示訊息喔!!(function)</button>
+
+    <!-- 試試看，這個按鈕按下去的結果是? -->
+    <!-- <button onclick="javascript:alert('Hello JavaScript!!! onepiece')">點我會提示訊息喔!!(inline)</button>	 -->
+
+    <script type="text/javascript">
+    function showMessage() {
+        alert("Hello JavaScript!!!");
+    }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 2. function進化了 -->
+<!--    a. function傳入參數 -->
+<!--    b. function呼叫function -->
+<!--    c. 可以有回傳值 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>function</title>
+</head>
+<body>
+
+    <input type="text" id="input_x" value="5">
+    <span>+</span>
+    <input type="text" id="input_y" value="3">
+
+    <button id="check" onclick="myCalculate('add')">加法計算結果</button>
+
+    <script type="text/javascript">
+
+        function funAdd(inputX, inputY)
+        {
+            // 分解動作
+            // var temp = parseFloat(inputX) + parseFloat(inputY);
+            // return temp;
+
+            return parseFloat(inputX) + parseFloat(inputY);
+        }
+
+        function myCalculate(type)
+        {
+            var result;
+            var x = document.getElementById("input_x").value;
+            var y = document.getElementById("input_y").value;
+
+            if (type == "add")
+            {
+                result = funAdd(x, y);
+            }
+
+            alert(result);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- 3.  this -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>function</title>
+</head>
+
+<body>
+    x: <input type="text" id="input_x" value="5">
+    <br>
+    y: <input type="text" id="input_y" value="3">
+
+    <br>
+    <button id="btnPlus" onclick="myCalculate(this)">加法計算結果</button>
+    <br>
+    <button id="btnMinus" onclick="myCalculate(this)">減法計算結果</button>
+    <br>
+    <button id="btnTimes" onclick="myCalculate(this)">乘法計算結果</button>
+    <br>
+    <button id="btnDivide" onclick="myCalculate(this)">除法計算結果</button>
+    <br>
+
+    <script type="text/javascript">
+    function myCalculate(obj) {
+        var result;
+
+        var x = parseFloat(document.getElementById("input_x").value);
+        var y = parseFloat(document.getElementById("input_y").value);
+
+        if (obj.id == "btnPlus") {
+            result = x + y;
+        } else if (obj.id == "btnMinus") {
+            result = x - y;
+        } else if (obj.id == "btnTimes") {
+            result = x * y;
+        } else if (obj.id == "btnDivide") {
+            result = x / y;
+        } else {
+            result = "你按到的不是+-*/按鈕";
+        }
+
+        alert(result);
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 4. function定義方法 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>function</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    fun1("apple");
+
+    // 一般我們使用方式，定義一個有名稱的函式
+    function fun1(str1) {
+        document.write("Hello " + str1 + "<br>");
+    }
+
+    // fun2("banana");
+    // 定義一個沒有名稱的函式，在宣告之前使用，程式會死掉。
+    var fun2 = function(str2) {
+        document.write("Hello " + str2 + "<br>");
+    }
+    fun2("kiwi");
+
+    // new Function 類別
+    var fun3 = new Function('str3', 'document.write("Hello " + str3 + "<br>");');
+    fun3("Mango");
+
+
+    // 同名函式會後蓋前，且不會拋出任何錯誤
+    // 這時候使用一個匿名函數將整個js內的邏輯包裝起來，就可以避免這種錯誤
+    (function() {
+        document.write("Hello orange <br>");
+    })();
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 5.拿昨天的範例來說 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>head or body</title>
+    <script>
+    function changeBlue() {
+        var p = document.getElementById('pJuly');
+        p.style.fontSize = "3em";
+        p.style.color = "red";
+    }
+    </script>
+</head>
+
+<body>
+
+    <p id="pJuly" onclick="changeBlue()">七月的日本有花火節。</p>
+
+    <p id="pAugust" onclick="(function() {
+            var p = document.getElementById('pAugust');
+            p.style.fontSize = '3em';
+            p.style.color = 'blue';
+    }());">八月的日本還是在花火節。</p>
+
+    <script>
+    
+    </script>
+</body>
+
+</html>
+
+
+

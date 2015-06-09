@@ -33,23 +33,26 @@
     }
 
     function handleFiles(fileList) {
-        // var fileList = this.files; /* now you can work with the file list */
+        // 檔案個數
         var numFiles = fileList.length;
-
+        // 餵list給內容區塊
         var list = document.createElement("ul");
-
         document.getElementById("imgFrame").appendChild(list);
+        
         for (var i = 0; i < numFiles; i++) {
 
-
+        	// 取得檔案物件
             var file = fileList[i];
+            // 轉換成local url(for img.src參照使用)
             var objectURL = window.URL.createObjectURL(file);
+            // 建立img物件，並將src設定為local url
             var img = document.createElement("img");
             img.src = objectURL;
+            alert(objectURL);
             img.onload = function() {
                 window.URL.revokeObjectURL(this.src);
             }
-
+            // 建立li物件，並將img物件餵給它
             var li = document.createElement("li");
             list.appendChild(li);
             li.appendChild(img);

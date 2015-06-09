@@ -1,27 +1,23 @@
-<!-- 2-4. 如果無論如何都要用到apple? -->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>scope</title>
-    <script>
-      var x = "apple";
-    </script>
+    <title>JavaScript</title>
 </head>
 
 <body>
 
-  <button onclick="getX()">click</button>
+    <button onclick="showMessage()">點我會提示訊息喔!!(function)</button>
 
-    <script>
-      function getX()
-      {
-        var x = "onepiece";
-        alert(window.x);
+    <!-- 試試看，這個按鈕按下去的結果是? -->
+    <!-- <button onclick="javascript:alert('Hello JavaScript!!! onepiece')">點我會提示訊息喔!!(inline)</button>  -->
 
-        // windows
-      }
+    <script type="text/javascript">
+    function showMessage() {
+        alert("Hello JavaScript!!!");
+    }
     </script>
+
 </body>
 
 </html>

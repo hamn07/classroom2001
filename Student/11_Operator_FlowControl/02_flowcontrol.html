@@ -1,0 +1,397 @@
+<!-- 流程控制(FlowControl) (p14-2) -->
+
+
+<!-- 1. if...else -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script>
+    var add = 10;
+    var input_result = 10;
+
+    // 大括弧可以移除的條件是?
+    if (add == input_result) {
+        alert("答對了!!");
+    } else {
+        alert("再重新算算吧!!");
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 2. 試試看 if ... elseif ... else -->
+<!-- 當 x大於y 的時候，提示 "x>y" -->
+<!-- 當 x等於y 的時候，提示 "x＝y" -->
+<!-- 當 x小於y 的時候，提示 "x<y" -->
+
+
+
+
+
+
+
+<!-- 3. switch ... case -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    x: <input type="text" id="input_x" value="5">
+    <br>
+    y: <input type="text" id="input_y" value="3">
+
+    <br>
+    <button id="btnPlus" onclick="myCalculate(this)">加法計算結果</button>
+    <br>
+    <button id="btnMinus" onclick="myCalculate(this)">減法計算結果</button>
+    <br>
+    <button id="btnTimes" onclick="myCalculate(this)">乘法計算結果</button>
+    <br>
+    <button id="btnDivide" onclick="myCalculate(this)">除法計算結果</button>
+    <br>
+
+    <script type="text/javascript">
+    function myCalculate(obj) {
+        var result;
+
+        var x = parseFloat(document.getElementById("input_x").value);
+        var y = parseFloat(document.getElementById("input_y").value);
+
+        // 把剛剛的 if...else 試著用 switch ... case 改寫看看
+
+        alert(result);
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4. for  -->
+<!-- 4-1. 從1加到10 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var result = 0;
+    
+    // 試試看 計算 從 1 加到 10 是多少
+
+    document.write(result);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4-2. 加總mary的成績 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var result = 0;
+
+    var classScore = new Array(3);
+    classScore[0] = new Array(6);
+    classScore[1] = new Array(6);
+    classScore[2] = new Array(6);
+
+    classScore[0][0] = "mary";
+    classScore[0][1] = 100;
+    classScore[0][2] = 100;
+    classScore[0][3] = 50;
+    classScore[0][4] = 88;
+    classScore[0][5] = 76;
+
+    classScore[1][0] = "john";
+    classScore[1][1] = 88;
+    classScore[1][2] = 75;
+    classScore[1][3] = 80;
+    classScore[1][4] = 95;
+    classScore[1][5] = 90;
+
+    classScore[2][0] = "emma";
+    classScore[2][1] = 90;
+    classScore[2][2] = 92;
+    classScore[2][3] = 88;
+    classScore[2][4] = 77;
+    classScore[2][5] = 96;    
+
+    // 加總 mary 的成績
+    
+    for (var i = 1; i <= 5; i++) {
+        result = result + classScore[0][i];
+    }
+
+    document.write(result);
+
+    // 想想看，這種時候如果你不是用陣列還有迴圈這件事情的話...
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4-3. 雙層迴圈 - 長方型星星 -->
+
+<!-- **** -->
+<!-- **** -->
+<!-- **** -->
+<!-- **** -->
+<!-- **** -->
+<!-- **** -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    
+    // 試試看
+
+   </script>
+</body>
+
+</html>
+
+
+
+<!-- 4-4. 雙層迴圈 - 三角形 -->
+
+<!-- * -->
+<!-- ** -->
+<!-- *** -->
+<!-- **** -->
+
+<!-- 我們來畫一個這樣的三角形吧 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    
+    // 試試看
+
+   </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4-5. 我相信你們一定已經搞定九九乘法表了。 -->
+
+
+
+
+
+
+
+
+<!-- 5. for in -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+    var mary = {chinese:100, english:100, math:50, history:88, geography:76};
+    var result = 0;
+
+    for (var score in mary)
+    {
+        result = result + parseInt(mary[score]);
+    }
+
+    document.write(result);
+
+   </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 6. while -->
+<!-- 6-1. 類似 for 的用法 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+    var i = 1;
+    var result = 0;
+
+    // 試試看 計算 從 1 加到 10 是多少
+
+    document.write(result);
+   </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 6-2. 和for的差異在 (課本範例) -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+    var num = prompt("請輸入1-10", "");
+
+    while (num != 6)
+    {
+        alert("不是這個數字，再輸入一次~");
+        num = prompt("請輸入1-10", "");
+    }
+
+    alert("好棒棒!!!!!");
+
+   </script>
+   
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 7. do...while -->
+<!-- 7-1. 類似 for 的用法 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+    var i = 1;
+    var result = 0;
+
+    // 試試看 計算 從 1 加到 10 是多少
+
+    document.write(result);
+   </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 7-2. 差異在 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlowControl</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var i = 1;
+
+    // do while
+    do {
+        document.write("do會先執行才判斷 <br>");
+    }
+    while (i < 0)
+
+    // while
+    while (i < 0) {
+        document.write("while先判斷才執行 <br>");
+    }
+    
+    </script>
+</body>
+
+</html>
