@@ -1,4 +1,8 @@
- /*只是為了說明用的把字型改很大*/
- body {
-    font-size: 10em;
- }
+#calFrame {
+    background-color: green;
+    display: inline-block;
+}
+#presult {
+	background-color: yellow;
+	display: inline-block;
+}
