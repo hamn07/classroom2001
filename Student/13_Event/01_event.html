@@ -1,0 +1,240 @@
+<!-- Event(事件) -->
+<!-- http://www.w3schools.com/jsref/dom_obj_event.asp -->
+
+
+
+
+
+
+
+<!-- 1. 已經看了很多次的onclick -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event</title>
+</head>
+
+<body>
+    <button onclick="showMessage()">點我會提示訊息喔!!(function)</button>
+
+    <script type="text/javascript">
+    function showMessage() {
+        alert("Hello JavaScript!!!");
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 2. onmousedown()、onmouseup() 假裝自己是按鈕-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event</title>
+    <style type="text/css">
+    #div1 {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #C2EBFF;
+        box-shadow: 2px 2px 12px #888888;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="div1" onmousedown="divMouseDown()" onmouseup="divMouseUp()"></div>
+
+    <script type="text/javascript">
+    function divMouseDown() {
+        var myDiv = document.getElementById("div1");
+        myDiv.style.boxShadow = "-2px -2px 12px #888888 inset";
+    }
+
+    function divMouseUp() {
+        var myDiv = document.getElementById("div1");
+        myDiv.style.boxShadow = "2px 2px 12px #888888";
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 3. onkeydown() & event.keyCode -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event</title>
+</head>
+
+<body>
+
+    <input type="text" onkeydown="getKeyCode(event)">
+
+    <p id="demo">這裡會顯示keyCode</p>
+
+    <script type="text/javascript">
+
+    function getKeyCode(eve) {
+        var code = eve.keyCode;
+        document.getElementById("demo").innerHTML = "The Unicode value is: " + code;
+    }
+    
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 4. drag -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+    #div1 {
+        width: 350px;
+        height: 350px;
+        padding: 50px;
+        border: 1px solid #aaaaaa;
+    }
+    </style>
+</head>
+
+<body>
+
+    <img id="imgop" src="../05_Table/img/01.jpg" draggable="true" ondragstart="drag(event)">
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <script>
+    
+    function drag(ev) {
+        // "text" or "url" or...
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function allowDrop(ev) {
+        // 阻擋預設要發生的事件
+        ev.preventDefault();
+    }
+
+    function drop(ev) {
+        // 阻擋預設要發生的事件
+        ev.preventDefault();
+
+        var data = ev.dataTransfer.getData("text");
+
+        ev.target.appendChild(document.getElementById(data));
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 5. 兩個窗格裡面拖動 -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+    div {
+        width: 350px;
+        height: 350px;
+        padding: 50px;
+        border: 1px solid #aaaaaa;
+        float:left;
+    }
+    </style>
+</head>
+
+<body>
+
+    <img id="imgop" src="../05_Table/img/01.jpg" draggable="true" ondragstart="drag(event)">
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <script>
+    function drag(ev) {
+        // "text" or "url" or...
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function allowDrop(ev) {
+        // 阻擋預設要發生的事件
+        ev.preventDefault();
+    }
+
+    function drop(ev) {
+        // 阻擋預設要發生的事件
+        ev.preventDefault();
+
+        var data = ev.dataTransfer.getData("text");
+
+        ev.target.appendChild(document.getElementById(data));
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+<!-- 6. onmousemove() -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>map</title>
+    <style type="text/css">
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: #99CCFF;
+        text-align: center;
+        line-height: 100px;
+    }
+    </style>
+    
+</head>
+
+<body onmousemove="getPos()">
+    <div id="mousePosition"></div>
+    <script type="text/javascript">
+    function getPos() {
+        document.getElementById("mousePosition").innerHTML = event.clientX + "," + event.clientY;
+    }
+    </script>
+</body>
+
+</html>

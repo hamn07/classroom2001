@@ -1,0 +1,22 @@
+<!-- canvas attribute -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <!-- 指定畫布實際大小的方法 -->
+    <canvas id="myCanvas" width="500px" height="500px" style="border:1px solid #c3c3c3;"></canvas>
+
+    <script type="text/javascript">
+    var cv = document.getElementById("myCanvas");
+    var ctx = cv.getContext("2d");
+    ctx.beginPath();
+    ctx.fillRect(0, 0, 300, 150);
+    ctx.stroke();
+    </script>
+</body>
+
+</html>

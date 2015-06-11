@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>doge</title>
+</head>
+
+<body onkeydown="moveDoge(event)">
+
+    <img id="dog" src="img/doge.gif" style="position:relative; top:50px; left:250px;" class="TurnH">
+
+    <script type="text/javascript">
+
+    var doge = document.getElementById("dog");
+
+    function moveDoge(eve) {
+        switch (eve.keyCode) {
+            case 37: //left
+                doge.style.left = (doge.offsetLeft - 8 - 10) + "px";
+                doge.style.transform = "rotateY(0deg)";
+                break;
+            case 38: //up
+                doge.style.top = (doge.offsetTop - 8 - 10) + "px";
+                doge.style.transform = "rotateX(180deg)";
+                break;
+            case 39: //right
+                doge.style.left = (doge.offsetLeft + 10) + "px";
+                doge.style.transform = "rotateY(180deg)";
+                break;
+            case 40: //down
+                doge.style.top = (doge.offsetTop + 10) + "px";
+                doge.style.transform = "rotateX(0deg)";
+                break;
+            default:
+                break;
+        }
+    }
+
+    </script>
+</body>
+
+</html>

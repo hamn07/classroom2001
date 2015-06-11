@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>doge</title>
+</head>
+
+<body onkeydown="moveDoge(event)">
+    <img id="dog" src="img/doge.gif" style="width:300px; height:300px; position:relative; top:50px; left:250px;" >
+    <script type="text/javascript">
+    var doge = document.getElementById("dog");
+
+    var i = 0;
+    
+    setInterval(function() {
+        i++
+        doge.style.transform = "rotateY(" + i.toString() + "deg)";
+    }, 10);
+
+    </script>
+</body>
+
+</html>

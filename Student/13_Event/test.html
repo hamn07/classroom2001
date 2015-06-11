@@ -1,0 +1,47 @@
+<!-- 4. drag -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+    #div1 {
+        width: 350px;
+        height: 350px;
+        padding: 50px;
+        border: 1px solid #aaaaaa;
+    }
+    </style>
+    <script type="text/javascript">
+    window.tdiff = [];
+    fred = function(a, b) {
+        return a - b;
+    };
+
+    window.onload = function(e) {
+        console.log(e.CAPTURING_PHAS);
+    }
+    </script>
+</head>
+
+<body>
+    <img id="imgop" src="../05_Table/img/01.jpg" draggable="true" ondragstart="drag(event)">
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <script>
+    function drag(eve) {
+        eve.dataTransfer.setData("text", eve.target.id);
+    }
+
+    function allowDrop(eve) {
+        eve.preventDefault();
+    }
+
+    function drop(eve) {
+
+        var data = eve.dataTransfer.getData("text");
+
+        eve.target.appendChild(document.getElementById(data));
+    }
+    </script>
+</body>
+
+</html>

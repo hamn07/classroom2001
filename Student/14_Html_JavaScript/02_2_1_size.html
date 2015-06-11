@@ -1,0 +1,22 @@
+<!-- canvas attribute -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <!-- style裡面，是讓canvas 縮放 到指定大小 -->
+    <canvas id="myCanvas" style="width:500px; height:500px; border:1px solid #000000;"></canvas>
+
+    <script type="text/javascript">
+    var cv = document.getElementById("myCanvas");
+    var ctx = cv.getContext("2d");
+    ctx.beginPath();
+    ctx.fillRect(0, 0, 300, 150);
+    ctx.stroke();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <canvas id="surface" width="600" height="400"></canvas>
+    <script>
+    var line = {
+        x: 300,
+        y: 200,
+        length: 100,
+        angle: 0
+    };
+
+    var canvas = document.getElementById("surface");
+    var ctx = canvas.getContext('2d');
+
+    function move() {
+        // Clear display
+        ctx.save();
+        ctx.fillStyle = "block";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+
+        // 走很快的鐘。
+        line.angle += (Math.PI * 2) / 100;
+        var x = line.x + line.length * Math.cos(line.angle);
+        var y = line.y + line.length * Math.sin(line.angle);
+
+        // Draw line
+        ctx.save();
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(line.x, line.y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    // 移動中
+    setInterval("move()", 10);
+    </script>
+</body>
+
+</html>

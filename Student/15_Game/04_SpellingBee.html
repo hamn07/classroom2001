@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Spelling Bee</title>
+<style>
+canvas
+{
+	cursor: crosshair;
+}
+</style>
+</head>
+
+<body onmousedown="mouseDown(this)">
+
+	<div>
+		<canvas id="canvasBee" width="450" height="600"> </canvas>
+		<audio>
+				<source src="music/ok.wav">
+				<source src="music/err.wav">
+		</audio>
+	</div>
+
+	<p id="vocabulary"></p>
+
+	<!--main var-->	  
+	<script>
+		var canvas = document.getElementById("canvasBee");
+		var bee = canvas.getContext("2d");
+		bee.globalCompositeOperation = "source-over";
+
+		var vList = [];
+		var vocabulary = "Fight";
+
+		var arcPosX = [];
+		var arcPosY = [];
+		var arcPosMoveY = [];
+		var arcLetter = [];
+		var arcAns = [];
+		
+		var img = new Image();
+	    img.onload = function() 
+	    {
+	    	//bee.drawImage(img, 0, 0,canvas.width,canvas.height);
+	    };
+		img.src = 'img/beeTransparency.jpg';
+		
+		var audio = document.getElementsByTagName('audio')[0];
+	</script>
+	
+	<!--control var-->	  
+	<script>
+		var beeCnt = 6;
+		var beeRadius = 25;
+		//重新設定canvas大小：(beeRadius*2+beeRadius)*beeCnt+ ((beeRadius/2) + beeRadius)
+		//canvas.width = 
+		var dis = 30;
+		var areaBeeY = (canvas.height * 0.5);          //420
+		var areaAnsY = (areaBeeY + beeRadius*2);   //480
+		var areaControlY = (areaAnsY + beeRadius*2 + dis);
+
+		var result = " ";
+		var pos = 0;
+		var okCnt = 0;
+		var errCnt = 0;
+		
+		var controlRadius = 30;
+		var block = (canvas.width/3);
+		var halfBlock = (block/2);
+		var blockAX = (halfBlock * 1 - controlRadius);
+		var blockBX = (halfBlock * 3 - controlRadius);
+		var blockCX = (halfBlock * 5 - controlRadius);
+
+		//時鐘
+		var gameTime = 0;
+		var angles = 0;
+		var second = 0;
+
+		//smile wave
+		var smileSX = blockAX+controlRadius*2;
+		var smileSY = canvas.height-(controlRadius*2)+13;
+		var smileEX = blockCX;
+		var smileEY = canvas.height-(controlRadius*2)+13;
+
+		var subCnt = (okCnt-errCnt);
+		var ctrlX = (smileSX+smileEX)/2 ;
+		var ctrlY = smileSY+(subCnt*10) ;
+		
+		var wave = 0;		
+	</script>	
+	
+	<!--Main-->
+	<script>
+		//取得單字串
+		function setList() 
+		{
+			vList = new Array("morning", "evening", "night",
+					"fine", "good", "goodbye", "hello", "thank", "book",
+					"chair", "computer", "desk", "eraser", "marker",
+					"notebook", "pen", "pencil", "apple", "ruler", "father",
+					"mother", "brother", "sister", "girl", "boy",
+					"student", "classmate", "friend", "Mr.", "arm", "ear",
+					"eye", "feet", "foot", "hair", "hand", "head", "leg",
+					"mouth", "nose", "apple", "banana", "bread", "cake", "egg",
+					"hotdog", "icecream", "juice", "milk",
+					"pizza", "sandwich", "soup", "tea", "water", "breakfast",
+					"dinner", "lunch", "animal", "bear", "bird", "cat",
+					"chicken", "dog", "elephant", "fish", "lion", "monkey",
+					"pig", "rabbit", "snake", "tiger", "zoo", "one", "two",
+					"three", "four", "five", "six", "seven", "eight", "nine",
+					"ten", "eleven", "twelve", "zero", "bathroom", "weather",
+					"window", "tree", "TV", "bedroom", "bookstore",
+					"classroom", "home", "kitchen", "library", "livingroom",
+					"park", "school", "store", "supermarket", "black", "blue",
+					"brown", "color", "green", "orange", "pink", "purple",
+					"red", "white", "yellow", "dress", "hat", "jacket",
+					"shirt", "shoes", "shorts", "skirt", "T-shirt", "bad",
+					"beautiful", "big", "clean", "cloudy", "cold", "cool",
+					"cute", "fat", "handsome", "hot", "long", "new", "nice",
+					"old", "rainy", "short", "small", "smart", "sunny", "tall",
+					"thin", "warm", "windy", "close", "come", "cook", "cut",
+					"dance", "draw", "drink", "eat", "fly", "go",
+					"listen", "look",
+					"meet", "open", "play", "read", "run", "see", "sing",
+					"sleep", "study", "swim", "take", "talk", "walk", "want",
+					"wash", "watch", "write", "bike", "bus", "car", "taxi",
+					"train", "Chinese", "English", "math","doctor", "teacher",
+					"fall", "spring", "summer", "winter", "January",
+					"February", "March", "April", "May", "June", "July",
+					"August", "September", "October", "November", "December",
+					"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+					"Saturday", "Sunday",
+					"outside", "under", "angry", "happy", "hungry", "sad",
+					"sick", "sorry", "thirsty", "tired", "an", "and", "bag",
+					"ball", "bed", "birthday", "box", "CD", "comicbook", "day",
+					"pig", "monkey", "dollar", "door", "flower", "great",
+					"here", "key", "name", "milk", "tea",
+					"blocktea", "table", "telephone", "today", "toy");
+		}
+
+		//初始化
+		function init() 
+		{
+			//1.設定 / 取得單字
+			setList();
+			vocabulary = vList[Math.round(Math.random() * (vList.length - 1))];
+			document.getElementById("vocabulary").innerHTML = "Answer:" + vocabulary ;
+			
+			//2. 設定位置
+			arcPosX.length = 0;
+			arcPosY.length = 0;
+			arcPosMoveY.length = 0;
+			arcLetter.length = 0;
+			arcAns.length = 0;
+			
+			for(var i=0; i<(beeCnt*2)-1; i++)
+			{
+				arcPosX[i] = (parseInt(beeRadius+beeRadius/2)*i) + 10;
+				arcPosY[i] = 0;
+				arcPosMoveY[i] = Math.round( ((Math.random() * 3) * (Math.random() * 5)) + 1 );
+				arcLetter[i] = " ";
+				arcAns[i] = " ";
+			}
+			
+			//3.亂數取位置
+			for (var i = 0; i < vocabulary.length; i++) 
+			{
+				var temp = Math.round(Math.random() * (arcPosX.length - 1));
+				var flag = 1;
+				while (flag) 
+				{
+					if (arcLetter[temp] == " ") 
+					{
+						setUpperLowerCase(temp, vocabulary.substring(i, i + 1));
+						flag = 0;
+					} else
+						temp = Math.round(Math.random() * (arcPosX.length - 1));
+				}
+			}
+			//4. 清空/還原
+			bee.drawImage(img, 0, 0, canvas.width, canvas.height); 
+
+			//drawRect(bee, 0, 0, canvas.width, areaControlY);
+			clearInterval(gameLoop);
+			
+			result = "";
+			pos = 0;
+      
+			gameTime = 60;
+			deg = (2/gameTime);
+			
+			if (okCnt==0 && errCnt==0)
+				second = 0;
+		}
+
+		//隨機讓字母大小寫
+		function setUpperLowerCase(index, letter) 
+		{
+			switch (Math.round(Math.random())) {
+			case 0:
+				arcLetter[index] = letter.toUpperCase();
+				break;
+			case 1:
+				arcLetter[index] = letter.toLowerCase();
+				break;
+			default:
+				break;
+			}
+		}
+		
+		//畫邊框
+		function drawRoundedRectangle(pen, x, y, w, h, r)
+		{
+			pen.save();
+			pen.beginPath();
+			pen.moveTo(x + r, y);
+			pen.lineTo(x + w - r, y);
+			pen.quadraticCurveTo(x + w, y, x + w, y + r);
+			pen.lineTo(x + w, y + h - r);
+			pen.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+			pen.lineTo(x + r, y + h);
+			pen.quadraticCurveTo(x, y + h, x, y + h - r);
+			pen.lineTo(x, y + r);
+			pen.quadraticCurveTo(x, y, x + r, y);
+			pen.stroke();			
+			pen.restore();
+		}
+
+		//畫方形白布
+		function drawRect(pen, x, y, w, h) 
+		{
+			pen.save();
+			pen.fillStyle = "#FFFFFF";
+			pen.fillRect(x, y, w, h);
+			pen.restore();
+		}
+
+		//畫圓形字
+		function drawTextArc(pen,x, y, r, arcColor, letter, font, fontColor) 
+		{
+			pen.save();
+			pen.beginPath();
+			pen.fillStyle = "#FFFFFF";
+			pen.arc(x+r, y+r+1, r, 0, Math.PI * 2);
+			pen.fill();
+			pen.lineWidth = 3;
+			pen.strokeStyle = arcColor;//"#FFFFFF";
+			pen.stroke();
+
+			pen.fillStyle = fontColor;
+			pen.font = font;
+			pen.textAlign = "center";
+			pen.textBaseline = "middle";
+			pen.fillText(letter, x+r, y+r+1);
+			pen.restore();
+		}
+		
+		//漸層顏色的字
+		function drawTextLinearGradient(word)
+		{
+			bee.save();
+			var grd = bee.createLinearGradient(blockBX, areaControlY+controlRadius, blockBX+controlRadius, (areaControlY+controlRadius)+13);
+			grd.addColorStop(0,"#93D693");
+			grd.addColorStop(1,"#FF8F8F");//"#FFA5A5");
+			// Fill with gradient
+			bee.fillStyle = grd;				
+			bee.font = "40px Verdana";
+			bee.textAlign = "center";
+			bee.textBaseline = "middle";
+			bee.fillText(word,(blockBX+controlRadius), (areaControlY+controlRadius)+13);
+			bee.restore();
+		}
+		
+		//移動
+		function moveArc() 
+		{
+			for (var i = 0; i < (beeCnt * 2) - 1; i++) {
+				arcPosY[i] = arcPosY[i] + arcPosMoveY[i];
+				if (arcPosY[i] >= areaAnsY)
+					arcPosY[i] = 0;
+			}
+		}
+
+		//動畫
+		function animate() 
+		{
+			moveArc();
+			//drawRect(bee, 0, 0, canvas.width, areaControlY);
+			//drawRoundedRectangle(bee, 0, areaAnsY, canvas.width,(areaControlY-areaAnsY) ,10);
+			bee.drawImage(img, 0, 0,canvas.width,canvas.height);
+
+			for (var i = 0; i < (beeCnt * 2) - 1; i++) {
+				if (arcLetter[i] != " ")
+				{
+					if ( arcPosY[i] >= areaBeeY)
+						drawTextArc(bee, arcPosX[i],  arcPosY[i], beeRadius, "#F0F0F0", arcLetter[i], "30px PT Sans Caption", "#F0F0F0");
+					else
+						drawTextArc(bee, arcPosX[i],  arcPosY[i], beeRadius, "#000000", arcLetter[i], "30px PT Sans Caption", "#000000");
+					drawTextArc(bee, arcPosX[i], (arcPosY[i] - areaAnsY), beeRadius, "#000000", arcLetter[i], "30px PT Sans Caption", "#000000");
+				}
+				
+				if (arcAns[i] != " ")
+				{
+					drawRoundedRectangle(bee, 0, areaAnsY, canvas.width,(areaControlY-areaAnsY) ,10);
+					drawTextArc(bee, arcPosX[i], areaAnsY+13, beeRadius, "#000000", arcAns[i], "30px PT Sans Caption", "#000000");
+				}
+			}
+			
+			second = (second + 0.1);
+			if (second >= gameTime + 1)
+			{
+				drawTextLinearGradient("Time's Up!");
+				clearInterval(gameLoop);
+			}
+			else
+			{
+				//clock
+				bee.save();
+				bee.fillStyle = "#FFD175";
+				bee.moveTo((blockBX+controlRadius), (areaControlY+controlRadius)+13);
+				bee.arc((blockBX+controlRadius), (areaControlY+controlRadius)+13, controlRadius+10, 1.5*Math.PI, Math.PI*(1.5+(deg*second)), false);
+				bee.lineTo((blockBX+controlRadius), (areaControlY+controlRadius)+13);
+				bee.fill();
+				bee.restore();
+
+				subCnt = (okCnt-errCnt);
+				ctrlY = smileSY+(subCnt*10) ;
+
+				if (subCnt > 2)
+				{
+					wave = (subCnt-6) *20;
+					ctrlY = smileSY+(6*10) ;
+				}
+				else if(subCnt < -6)
+				{
+					wave = (subCnt+6) *20;
+					ctrlY = smileSY+(-6*10) ;					
+				}
+							
+			}
+			drawTextArc(bee, blockAX, areaControlY+13, controlRadius, "#93D693", okCnt, "40px Verdana", "#93D693");
+			drawTextArc(bee, blockCX, areaControlY+13, controlRadius, "#FF8F8F", errCnt, "40px Verdana", "#FF8F8F");//"#FFA5A5");
+			bee.save();
+			bee.moveTo(smileSX,smileSY);
+			bee.quadraticCurveTo(ctrlX + wave , ctrlY, smileEX, smileEY);
+			bee.stroke();
+			bee.restore();
+		}
+
+		//滑鼠點擊
+		function mouseDown(obj) 
+		{
+			//for test mouse event
+			document.getElementById("vocabulary").innerHTML = "Answer:" + vocabulary + ":" + event.clientX + "," + event.clientY;
+			
+			//檢查有沒有選到字
+			checkLetter();
+			//檢查是不是要開始遊戲
+			checkStart();
+			//檢查是不是下一題
+			checkNext();
+		}
+		
+		//檢查是不是要開始遊戲
+		function checkStart()
+		{
+			if ((blockAX <= parseInt(event.clientX) && parseInt(event.clientX) <= blockBX) &&
+				(areaControlY <= parseInt(event.clientY) && parseInt(event.clientY) <= areaControlY+(controlRadius*2)))	
+				startGame();
+		}
+		
+		//檢查是不是下一題
+		function checkNext()
+		{
+			if ((blockCX <= parseInt(event.clientX) && parseInt(event.clientX) <= canvas.width) &&
+				(areaControlY <= parseInt(event.clientY) && parseInt(event.clientY) <= areaControlY+(controlRadius*2)))
+			{
+				audio.src = "music/err.wav";
+				audio.load();
+				audio.play();
+				errCnt = errCnt + 1;
+				startGame();
+			}
+		}
+		
+		//檢查有沒有選到字
+		function checkLetter()
+		{
+			for (var i = 0; i < (beeCnt * 2) - 1; i++) {
+				var first = parseInt(beeRadius / 4);
+
+				if ((parseInt(arcPosX[i] + first) <= parseInt(event.clientX) && parseInt(event.clientX) <= parseInt(arcPosX[i] + beeRadius * 2))
+						&& (parseInt(arcPosY[i]) <= parseInt(event.clientY) && parseInt(event.clientY) <= parseInt(arcPosY[i] + beeRadius * 2))) 
+				{
+					if (arcLetter[i] != " ") 
+					{
+						//draw ans
+						//drawTextArc(bee, arcPosX[pos], areaAnsY, beeRadius, arcLetter[i]);
+						
+						result = result + arcLetter[i];
+						arcAns[pos] = arcLetter[i];
+						arcLetter[i] = " ";
+						pos = pos + 1;
+																		
+						//判斷是否開始下一個單字，答對加一
+						if (result.toLowerCase().match(vocabulary.toLowerCase()) != null)
+						{
+							audio.src = "music/ok.wav";
+							audio.load();
+							audio.play();
+							okCnt = okCnt + 1;
+							drawTextArc(bee, blockAX, areaControlY+13, controlRadius, "#FFFFFF", okCnt, "40px Verdana", "#93D693");
+							startGame();
+						}
+						
+						//全部都按錯還是要開始下一題
+						if (result.length == vocabulary.length)
+						{
+							audio.src = "music/err.wav";
+							audio.load();
+							audio.play();
+							errCnt = errCnt + 1;
+							drawTextArc(bee, blockCX, areaControlY+13, controlRadius, "#FFFFFF", errCnt, "40px Verdana", "#D00000");
+							startGame();
+						}
+					}
+				}
+			}			
+		}
+
+		//開始遊戲
+		var gameLoop;
+		function startGame() 
+		{
+			init();
+			gameLoop = setInterval(animate, 100);
+		}
+		
+		drawTextLinearGradient("☜☜☜Start");
+		drawTextArc(bee, blockAX, areaControlY+13, controlRadius, "#FFFFFF", "✓", "40px Verdana", "#93D693");
+		drawTextArc(bee, blockCX, areaControlY+13, controlRadius, "#FFFFFF", "✘", "40px Verdana", "#D00000");
+
+	</script>
+</body>
+</html>
+                                              

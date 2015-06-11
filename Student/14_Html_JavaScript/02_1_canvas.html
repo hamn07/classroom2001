@@ -1,0 +1,112 @@
+<!-- 1. 人像 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <a href="http://www.w3schools.com/tags/ref_canvas.asp">w3schools</a>
+    <br>
+    <a href="https://developer.mozilla.org/zh-TW/docs/Web/Guide/HTML/Canvas_tutorial">mdn</a>
+    <br>
+    <!-- 指定畫布實際大小的方法 -->
+    <canvas id="myCanvas" width="500px" height="500px" style="border:1px solid #c3c3c3;"></canvas>
+    <script type="text/javascript">
+    var cv = document.getElementById("myCanvas");
+    var ctx = cv.getContext("2d");
+
+    // 畫線 (moveTo(x,y)、lineTo(x,y)、stroke)
+    ctx.moveTo(250, 0);
+    ctx.lineTo(0, 100);
+    ctx.stroke();
+
+    ctx.moveTo(250, 0);
+    ctx.lineTo(500, 100);
+    ctx.stroke();
+
+    // 畫圓 (beginPath、arc(x, y ,r, 起始角度, 結束角度)、stroke(畫出來)、fill(填滿))
+    // http://www.w3schools.com/tags/canvas_arc.asp
+    ctx.beginPath();
+    
+    // createRadialGradient(漸層a圓心x, 漸層a圓心y, 漸層a半徑, 漸層b圓心x, 漸層b圓心y, 漸層b半徑)
+    var gradient = ctx.createRadialGradient(250, 150, 20, 250, 150, 80);
+    
+    // 漸層層級
+    gradient.addColorStop(0.0 , 'rgb(255,0,0)');
+    gradient.addColorStop(0.5 , 'rgb(0,255,0)');
+    gradient.addColorStop(1.0 , 'rgb(0,0,255)');
+    
+    ctx.fillStyle = gradient;
+    ctx.arc(250, 150, 100, 0, 2 * Math.PI);
+    ctx.fill();
+
+
+    // 畫一個四方型 (x, y, width, height)
+    ctx.beginPath();
+
+    // createLinearGradient(起點x, 起點y, 終點x, 終點y)
+    gradient = ctx.createLinearGradient(200, 0, 300, 0);
+
+    // 漸層層級
+    gradient.addColorStop(0, 'red');
+    gradient.addColorStop(1 / 6, 'orange');
+    gradient.addColorStop(2 / 6, 'yellow');
+    gradient.addColorStop(3 / 6, 'green')
+    gradient.addColorStop(4 / 6, 'aqua');
+    gradient.addColorStop(5 / 6, 'blue');
+    gradient.addColorStop(1, 'purple');  
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(200, 250, 100, 200);
+
+    // 畫一個三點曲線 (一個控制點) 
+    // 看w3c圖示：http://www.w3schools.com/tags/canvas_quadraticcurveto.asp
+    ctx.beginPath();
+    ctx.moveTo(200, 470);
+    ctx.quadraticCurveTo(225, 435, 240, 470);
+    ctx.stroke();
+
+    // 畫一個三點曲線 (一個控制點)
+    ctx.beginPath();
+    ctx.moveTo(260, 470);
+    ctx.quadraticCurveTo(275, 435, 300, 470);
+    ctx.stroke();
+
+
+    // 畫一個四點曲線 (兩個控制點)
+    // 看w3c圖示：http://www.w3schools.com/tags/canvas_beziercurveto.asp
+    ctx.beginPath();
+    ctx.moveTo(200, 250);
+    ctx.bezierCurveTo(100, 280, 220, 320, 100, 370);
+    ctx.stroke();
+
+    // 畫一個四點曲線 (兩個控制點)
+    ctx.beginPath();
+    ctx.moveTo(300, 250);
+    ctx.bezierCurveTo(400, 280, 220, 320, 400, 370);
+    ctx.stroke();
+
+    // 寫字
+    ctx.font = '40pt Calibri';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Hello', 195, 320);
+
+    // 畫一張圖片
+    var img = new Image();
+    img.src = "img/oplogo.png";
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+    }
+    </script>
+</body>
+
+</html>
+
+<!-- 2. 試一下改變線條顏色粗細 -->
+<!-- http://www.w3schools.com/tags/ref_canvas.asp   # Colors, Styles, and Shadows -->
+
+
+<!-- 3. 試一下畫出連續線條 -->
+<!-- http://www.html5canvastutorials.com/tutorials/html5-canvas-element/ -->

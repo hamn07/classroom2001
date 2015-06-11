@@ -1,0 +1,38 @@
+<!-- 1. 人像 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+
+    <!-- 指定畫布實際大小的方法 -->
+    <canvas id="myCanvas" width="500px" height="500px" style="border:1px solid #c3c3c3;"></canvas>
+
+    <script type="text/javascript">
+    var cv = document.getElementById("myCanvas");
+    var ctx = cv.getContext("2d");
+
+    // 畫一張圖片 - 匿名
+    var imgA = new Image();
+    imgA.onload = function() {
+        ctx.drawImage(imgA, 0, 0);
+    }
+    imgA.src = "img/oplogo.png";
+
+    // 畫一張圖片 - 非匿名
+    var imgB = new Image();
+    //這邊函數不用括號，有括號表示這個函數會立即呼叫執行，這邊只是用來辨識函數不須立即執行，稍後需要時才會被呼叫。
+    imgB.onload = putImageB;
+    imgB.src = "img/chopper.png";
+
+    function putImageB() {
+        ctx.drawImage(imgB, 0, 200);
+    }
+    </script>
+
+</body>
+
+</html>

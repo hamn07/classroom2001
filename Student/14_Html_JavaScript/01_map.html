@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>map</title>
+    <style type="text/css">
+    #mousePosition {
+        position: fixed;
+        right: 0px;
+        top: 25px;
+        z-index: 50;
+        font-size: 2em;
+    }
+    
+    #mousePositionB {
+        position: fixed;
+        right: 0px;
+        top: 50px;
+        z-index: 50;
+        font-size: 2em;
+    }
+    
+    #posData {
+        position: fixed;
+        right: 0px;
+        top: 100px;
+        z-index: 50;
+        font-size: 2em;
+    }
+    </style>
+</head>
+
+<body onmousemove="getPos(event)">
+    <!-- 圖片比例換算網頁：http://scale.0123456789.tw/ -->
+    <!-- shape="rect"         coords="x1, y1, x2, y2" -->
+    <!-- shape="circle"       coords="x, y, 半徑" -->
+    <!-- shape="polygon"      coords="x1, y1, x2, y2, x3, y3, x4, y4..." -->
+    <img src="img/japanmap.jpg" usemap="#jp">
+    <map name="jp">
+        <area id="okinawa" shape="rect" coords="65,1152,134,1239" href="#" onmouseover="info(this)">
+        <area id="fuji" shape="circle" coords="1000,1068,50" href="#" onmouseover="info(this)">
+        <area id="hokkaido" shape="polygon" coords="1384,176,1304,297,1468,296" href="#" onmouseover="info(this)">
+        <area id="plane" shape="polygon" coords="1368,1074,1486,1036,1550,1062,1488,1116" href="#" onmouseover="info(this)">
+    </map>
+    <div id="mousePosition"></div>
+    <div id="mousePositionB"></div>
+    <div id="posData"></div>
+    <script type="text/javascript">
+    function getPos(eve) {
+        // 
+        document.getElementById("mousePosition").innerHTML = (eve.clientX + document.body.scrollLeft) + "," + (eve.clientY + document.body.scrollTop);
+        document.getElementById("mousePositionB").innerHTML = eve.offsetX + "," + eve.offsetY;
+    }
+
+    function info(obj) {
+        // alert(obj.id);
+    }
+
+
+    // 資料來源：http://www.dotblogs.com.tw/aquarius6913/archive/2011/01/03/20538.aspx
+    var s = "";
+    s += " 網頁可見區域寬：" + document.body.clientWidth;
+    s += "<br> 網頁可見區域高：" + document.body.clientHeight;
+    s += "<br> 網頁可見區域寬：" + document.body.offsetWidth + " (包括邊線和捲軸的寬)";
+    s += "<br> 網頁可見區域高：" + document.body.offsetHeight + " (包括邊線的寬)";
+    s += "<br> 網頁正文全文寬：" + document.body.scrollWidth;
+    s += "<br> 網頁正文全文高：" + document.body.scrollHeight;
+    s += "<br> 網頁被卷去的高(ff)：" + document.body.scrollTop;
+    s += "<br> 網頁被卷去的高(ie)：" + document.documentElement.scrollTop;
+    s += "<br> 網頁被卷去的左：" + document.body.scrollLeft;
+
+    s += "<br> 網頁正文部分上：" + window.screenTop;
+    s += "<br> 網頁正文部分左：" + window.screenLeft;
+    s += "<br> 螢幕解析度的高：" + window.screen.height;
+    s += "<br> 螢幕解析度的寬：" + window.screen.width;
+    s += "<br> 螢幕可用工作區高度：" + window.screen.availHeight;
+    s += "<br> 螢幕可用工作區寬度：" + window.screen.availWidth;
+    s += "<br> 你的螢幕設置是 " + window.screen.colorDepth + " 位彩色";
+    // s += "<br> 你的螢幕設置 " + window.screen.device + " 像素/英寸"; // ie
+    document.getElementById("posData").innerHTML = s;
+    </script>
+</body>
+
+</html>

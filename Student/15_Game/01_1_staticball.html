@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ball</title>
+</head>
+
+<body>
+    <canvas id="surface" width="600" height="400"></canvas>
+    <script>
+    var ball = {
+        x: 300,
+        y: 200,
+        r: 15
+    };
+
+    var canvas = document.getElementById("surface");
+    var ctx = canvas.getContext('2d');
+
+    // Clear display
+
+    // 用 save() 和 restore() 夾住，改變顏色或者改變線條粗細等等影響的區域只在這個範圍
+    ctx.save(); // 儲存目前狀態
+    ctx.fillStyle = "block";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.restore(); // 返回狀態
+
+    // Draw ball
+    ctx.save();
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.arc(300, 200, ball.r, 0, Math.PI * 2, true);
+    ctx.fill();
+    ctx.restore(); // 返回狀態
+    
+    </script>
+</body>
+
+</html>

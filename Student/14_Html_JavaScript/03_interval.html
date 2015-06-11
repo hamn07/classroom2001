@@ -1,0 +1,217 @@
+<!-- 1. 移動吧，圖片 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>setInterval</title>
+</head>
+
+<body>
+    <img id="op" src="img/onepiece.png" style="width:1064px; height:599px; position: relative;">
+
+    <div id="log">initial content</div>
+
+    <script type="text/javascript">
+
+    var imgOP = document.getElementById("op");
+
+    function animate() {        
+        var posLeft = parseInt(imgOP.style.left).toString() == "NaN" ? 0 : parseInt(imgOP.style.left);
+
+        imgOP.style.left = (posLeft - 1) + "px";
+
+        if (posLeft == (parseInt(imgOP.style.width) * -1))
+        {
+            imgOP.style.left = document.body.clientWidth + "px";
+        }
+    }
+
+    setInterval("animate()", 10);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 2. 移動吧，圖片 - 加上開始暫停 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>setInterval</title>
+</head>
+
+<body>
+    <img id="op" src="img/onepiece.png" style="width:1064px; height:599px; position: relative;">
+
+    <div>
+        <button onclick="start()">start</button>
+        <button onclick="pause()">pause</button>
+        <button onclick="again()">again</button>
+    </div>
+
+    <script type="text/javascript">
+
+    var imgOP = document.getElementById("op");
+    var gameflag;
+
+    function start(){
+         gameflag = setInterval("animate()", 10);
+    }
+
+    function pause(){
+        clearInterval(gameflag);
+    }
+
+    function again(){
+        clearInterval(gameflag);
+        imgOP.style.top = "0px";
+        imgOP.style.left = "0px";
+    }
+
+    function animate() {
+        
+        var posLeft = parseInt(imgOP.style.left).toString() == "NaN" ? 0 : parseInt(imgOP.style.left);
+
+        imgOP.style.left = (posLeft - 1) + "px";
+
+        if (posLeft == (parseInt(imgOP.style.width) * -1))
+        {
+            imgOP.style.left = document.body.clientWidth + "px";
+        }
+    }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- 3. 移動吧，圖片 - 這樣也可以 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>setInterval</title>
+</head>
+
+<body>
+    <img id="op" src="img/onepiece.png" style="width:1064px; height:599px; position: relative;">
+
+    <div id="log"></div>
+
+    <script type="text/javascript">
+
+    var imgOP = document.getElementById("op");
+
+    function animate() {
+
+        var posLeft = imgOP.offsetLeft;
+
+        imgOP.style.left = (posLeft - 9) + "px";
+
+        if (posLeft == (imgOP.offsetWidth * -1))
+        {
+            imgOP.style.left = document.body.clientWidth + "px";
+        }
+    }
+
+    setInterval("animate()", 10);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- 4. 移動吧，圖片 - 分解動作 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>setInterval</title>
+</head>
+
+<body>
+    <img id="op" src="img/onepiece.png" style="width:1064px; height:599px">
+
+    <script type="text/javascript">
+    // 1. 想要圖片浮動起來的關鍵字是什麼
+
+    // 2. 在javaScript抓到那張圖片
+
+    // 3. 想讓圖片平行往左邊移動，需要使用到的屬性是?
+
+    // 4. 想讓圖片不斷反覆相同的動作，關鍵字是?                                                setInterval
+
+    // 5. 要把重複的動作包成一個function，function裡面做了哪些事?
+
+    //      a. 改變座標值
+
+    //      b. 當圖片跑出瀏覽器時，要從另外一邊再跑出來
+
+    // 6. 如果要加上開始、暫停、重新啟動，關鍵字是?                                            clearInterval
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<!-- 5. left vs offsetLeft -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>setInterval</title>
+</head>
+
+<body>
+    <img id="op" src="img/onepiece.png" style="width:1064px; height:599px; position: relative;">
+
+    <div id="log"></div>
+
+    <script type="text/javascript">
+
+    var imgOP = document.getElementById("op");
+
+    imgOP.style.top = "0px";
+    imgOP.style.left = "0px";
+
+    // left 和 offsetLeft 的差異
+    // http://www.georgehernandez.com/h/xComputers/CSS/BoxDimensions.asp
+    document.getElementById("log").innerHTML += imgOP.style.top + "<br>";
+    document.getElementById("log").innerHTML += imgOP.style.left + "<br>";
+
+    document.getElementById("log").innerHTML += imgOP.offsetTop + "<br>";
+    document.getElementById("log").innerHTML += imgOP.offsetLeft + "<br>";
+
+    </script>
+</body>
+
+</html>
