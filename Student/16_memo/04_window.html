@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+    
+    <title>window</title>
+    
+    <style type="text/css">
+    a {
+        text-decoration: none
+    }
+    
+    #gotop {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+    }
+    </style>
+</head>
+
+<body>
+
+    <img id="gotop" onclick="" src="http://www.gigabyte.tw/images/2014/model_page/icon_Top01.png">
+    
+    <!-- 網路範例 -->
+    <a style="display:scroll;position:fixed;bottom:50px;left:5px;" href="#">
+        <img src="http://1.bp.blogspot.com/-_gUa3K1wDNo/TmzrHROhBVI/AAAAAAAADpU/vOKm_7zL8DQ/s1600/Top_medium.png" />
+    </a>
+    
+    <!-- ==== end ==== -->
+
+    <h4> <a href="http://www.ncku.edu.tw/~rcenter/book/html/JavaScript.html">
+    網頁瀏覽或執行，是開啟在瀏覽視窗（window）<br>
+    包含了一份的HTML文件（document）<br>文件中又包含了各種物件（object）<br>每個物件都可以加以命名（name）或加上識別碼（id）</a> </h4>
+
+    <h4>物件？物件導向？<br>
+    String （類別）裡面包含了 length （屬性） 和 indexOf()、substr()、split()等（方法、凾式）<br>
+    Image （類別）裡面包含了 src （屬性） 和 onload（事件）<br><br>
+    對JavaScript來說，物件是 屬性、方法、事件的集合
+    </h4>
+
+
+    <h4> <a href="http://www.w3schools.com/js/js_htmldom.asp">DOM：Document Object Model </a> <br>
+        文件、物件、模型 <br>
+        DOM不是一種技術，只是存取結構化文件的一種思想
+        一份有結構化的文件，透過DOM模型，轉換成DOM樹，讓我們可以用物件的方式操作html元素
+    </h4>
+
+    <h4> css樣式表，再HTML4，官方規定放在head裡面；html5開始才有關於放在非 head 內的標準。
+    <br> css 和 JavaScript 放在 head 和 body 的不同在?</h4>
+
+
+    <h4> <a href="http://blog.darkthread.net/post-2008-11-08-what-is-jquery.aspx">
+    JQuery</a> <br>
+    <a href="http://www.w3school.com.cn/jquery/">簡體中文的w3c</a>
+     </h4>
+
+
+    <pre>
+        //傳統的 JavaScript 寫法
+        var obj1 = document.getElementById("test_id");
+
+        //jQuery 的寫法
+        var obj2 = $("#test_id");
+    </pre>
+    
+
+    <script type="text/javascript">
+    // 網路範例
+    $(function() {
+        $("#gotop").click(function() {
+            jQuery("html,body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > -1) {
+                $('#gotop').fadeIn("fast");
+            } else {
+                $('#gotop').stop().fadeOut("fast");
+            }
+        });
+    });
+    </script>
+
+
+
+
+</body>
+
+</html>

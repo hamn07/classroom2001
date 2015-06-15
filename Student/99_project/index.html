@@ -3,16 +3,12 @@
 
 <head>
     <title></title>
-    <!-- load lightbox -->
-    <link href="lightbox/css/lightbox.css" rel="stylesheet" />
-    <script src="lightbox/js/lightbox.min.js"></script>
     <!-- load jQuery -->
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- load lightbox -->
     <!-- css of this page -->
     <style type="text/css">
     #wrapper {
-        /*width: 940px;*/
-        
         margin: 0 auto;
     }
     
@@ -23,10 +19,17 @@
         height: 120px;
         /*width: 960px;*/
         /*margin-left: -10px;*/
+        /*line-height: 50px;*/
         
-        line-height: 50px;
         position: relative;
         z-index: 1;
+    }
+    
+    .filter {
+        width: 100%;
+        height: 100px;
+        background-color: yellow;
+        /*line-height: 1px;*/
     }
     
     #content {
@@ -90,14 +93,14 @@
         /* css standard, currently it works in most modern browsers like firefox,  */
     }
     
-    .zitem .caption a {
+    .zitem .caption a:first-child {
         text-decoration: none;
         color: #fff;
         font-size: 12px;
         /* add spacing and make the whole row clickable*/
         
         padding: 5px;
-        display: block;
+        display: inline-block;
     }
     /*    img {
         border: 0;
@@ -109,11 +112,36 @@
     .clear {
         clear: both;
     }
+    
+    .enlarge {
+        display: none;
+        width: 100%;
+        /*height: 200px;*/
+        
+        border: 4px solid #222;
+        margin: 5px 5px 5px 0;
+        /* required to hide the image after resized */
+        
+        overflow: hidden;
+        /* for child absolute position */
+        
+        position: relative;
+        /* display div in line */
+        
+        float: left;
+    }
     </style>
     <!-- *************** -->
     <!-- js of this page -->
     <!-- *************** -->
     <script type="text/javascript">
+    // in order to regex filename from url of an image
+    String.prototype.filename = function(extension) {
+        var s = this.replace(/\\/g, '/');
+        s = s.substring(s.lastIndexOf('/') + 1);
+        return extension ? s.replace(/[?#].+$/, '') : s.split('.')[0];
+    }
+    var imgCount = 0;
     $(document).ready(function() {
 
         //Calculate the height of <header>
@@ -136,6 +164,12 @@
             }
         });
 
+        $("#urlSelect").click(function(e) {
+            var imgUrl = prompt("Please enter image url:", "http://");
+            if (imgUrl != null) {
+                myFuncRenderImage(imgUrl, imgUrl.filename(), false);
+            }
+        })
 
         $("#fileSelect").click(function(e) {
             if ($("#fileElem")) {
@@ -155,95 +189,160 @@
                 // 轉換成local url
                 var objectURL = window.URL.createObjectURL(file);
 
-
-                // 建立div物件，並將img物件餵給它
-                var div = document.createElement("div");
-                div.className = "zitem";
-                // document.body.insertBefore(div, document.body.firstChild);
-                $("#content").prepend(div);
-
-
-                // 建立img物件，並將src設定為local url
-                var a = document.createElement("a");
-                a.href = objectURL;
-                var img = document.createElement("img");
-                img.src = objectURL;
-                img.width = $('.zitem').width();
-                img.height = $('.zitem').height();
-                img.onload = function() {
-                    window.URL.revokeObjectURL(this.src);
-                }
-
-                // 建立a href物件，並將img物件餵給它
-                // var a = document.createElement("a");
-                // a.href = objectURL;
-                a.appendChild(img);
-
-
-                div.appendChild(a);
-
-                // 建立caption
-                a = document.createElement("a");
-                a.href = "#";
-                a.innerHTML = file.name;
-                var caption = document.createElement("div");
-                $(caption).addClass("caption");
-                $(caption).width($('.zitem').width());
-                caption.appendChild(a);
-                div.appendChild(caption)
-
-
-
-
-                // document.body.appendChild(div);
-
-                // $('#content').children("img").width($('.zitem').width());
-                // $('#content').children("img").height($('.zitem').height());
-                // $('.caption').width($('.zitem').width());
-
-                //move the image in pixel
-                var move = -15;
-
-                //zoom percentage, 1.2 =120%
-                var zoom = 1.2;
-
-                //On mouse over those thumbnail
-                $('.zitem').hover(function() {
-
-                        //Set the width and height according to the zoom percentage
-                        width = $('.zitem').width() * zoom;
-                        height = $('.zitem').height() * zoom;
-
-                        //Move and zoom the image
-                        $(this).find('img').stop(false, true).animate({
-                            'width': width,
-                            'height': height,
-                            'top': move,
-                            'left': move
-                        }, {
-                            duration: 200
-                        });
-
-                        //Display the caption
-                        $(this).find('div.caption').stop(false, true).fadeIn(200);
-                    },
-                    function() {
-                        //Reset the image
-                        $(this).find('img').stop(false, true).animate({
-                            'width': $('.zitem').width(),
-                            'height': $('.zitem').height(),
-                            'top': '0',
-                            'left': '0'
-                        }, {
-                            duration: 100
-                        });
-
-                        //Hide the caption
-                        $(this).find('div.caption').stop(false, true).fadeOut(200);
-                    });
+                myFuncRenderImage(objectURL, file.name, true);
             }
         })
+
+        $("#filterPopup").click(function() {
+            $("#filter").css("display", "block");
+            $("#filter").addClass("filter");
+        });
+        $("#searchText").keypress(function(e) {
+            searchTextValue = this.value;
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13') {
+                // Enter pressed
+                var zitemList = document.getElementsByClassName("zitem");
+                console.log(zitemList.length);
+                for (var i=0;i<zitemList.length;i++)
+                {
+                    var zitem = zitemList[i];
+                    console.log($(zitem).children);
+                }
+            }
+
+        });
     });
+    // url: 圖片位址
+    // isLocal: 是否為local image upload
+    function myFuncRenderImage(url, fileName, isLocal) {
+        imgCount++;
+        // 建立enlarge div物件，並將img物件餵給它
+        var enlargeDiv = document.createElement("div");
+        enlargeDiv.id = "img" + imgCount + "-enlarge";
+        enlargeDiv.className = "enlarge";
+        document.body.appendChild(enlargeDiv);
+        var enlargeImg = document.createElement("img");
+        enlargeImg.src = url;
+        enlargeImg.width = $(window).width();
+        enlargeDiv.onclick = function() {
+
+            this.style.display = "none";
+            // $(this).remove();
+            // document.body.appendChild(this);
+        }
+        enlargeDiv.appendChild(enlargeImg);
+
+
+        // 建立div物件，並將img物件餵給它
+        var div = document.createElement("div");
+        div.className = "zitem";
+        // document.body.insertBefore(div, document.body.firstChild);
+        $("#content").prepend(div);
+
+
+        // 建立img物件，並將src設定為local url
+        var a = document.createElement("a");
+        a.id = "img" + imgCount;
+        //show enlarge imgae
+        a.onclick = function() {
+            // hide previous enlarge image first
+            $(".enlarge").css("display", "none");
+            var elemImage = document.getElementById(this.id + "-enlarge");
+            // elemImage.style.width = $(window).width();
+            elemImage.style.display = "inline";
+            $("#content").prepend(elemImage);
+        };
+        a.href = "#";
+        var img = document.createElement("img");
+        img.src = url;
+        img.width = $('.zitem').width();
+        img.height = $('.zitem').height();
+        img.onload = function() {
+            window.URL.revokeObjectURL(this.src);
+        };
+
+        // 建立a href物件，並將img物件餵給它
+        // var a = document.createElement("a");
+        // a.href = objectURL;
+        a.appendChild(img);
+
+
+        div.appendChild(a);
+
+        // 建立caption
+        a = document.createElement("a");
+        a.href = "#";
+        a.innerHTML = fileName;
+        a.onclick = function() {
+            var modifiedDesc = prompt("Modify Description:", this.innerHTML);
+            if (modifiedDesc != null) {
+                this.innerHTML = modifiedDesc;
+            }
+        }
+        var caption = document.createElement("div");
+        $(caption).addClass("caption");
+        $(caption).width($('.zitem').width());
+        caption.appendChild(a);
+
+        // delete icon
+        var deleteIconHref = document.createElement("a");
+        deleteIconHref.href = "#";
+        deleteIconHref.style.right = "1px";
+        deleteIconHref.style.cssFloat = "right";
+        var deleteIcon = document.createElement("img");
+        deleteIcon.src = "img/Cancel-24.png";
+        deleteIcon.onclick = function() {
+            $(this).parent("a").parent().parent(".zitem").remove();
+        };
+
+        deleteIconHref.appendChild(deleteIcon);
+        caption.appendChild(deleteIconHref);
+        div.appendChild(caption);
+
+
+        //move the image in pixel
+        var move = -15;
+
+        //zoom percentage, 1.2 =120%
+        var zoom = 1.2;
+
+        //On mouse over those thumbnail
+        $('.zitem').hover(function() {
+
+                //Set the width and height according to the zoom percentage
+                width = $('.zitem').width() * zoom;
+                height = $('.zitem').height() * zoom;
+
+                //Move and zoom the image
+                $(this).find('.zitem.a.img').stop(false, true).animate({
+                    'width': width,
+                    'height': height,
+                    'top': move,
+                    'left': move
+                }, {
+                    duration: 200
+                });
+
+                //Display the caption
+                $(this).find('div.caption').stop(false, true).fadeIn(200);
+            },
+            function() {
+                //Reset the image
+                $(this).find('.zitem.a.img').stop(false, true).animate({
+                    'width': $('.zitem').width(),
+                    'height': $('.zitem').height(),
+                    'top': '0',
+                    'left': '0'
+                }, {
+                    duration: 100
+                });
+
+                //Hide the caption
+                $(this).find('div.caption').stop(false, true).fadeOut(200);
+            });
+    }
     </script>
 </head>
 
@@ -251,10 +350,16 @@
     <div id="wrapper">
         <nav>
             <a href="#" id="fileSelect"><img src="img/Folder-Add-01-128.png" class="icon"></a>
-            <a href="#"><img src="img/Add-Earth-128.png"></a>
-            <a href="#"><img src="img/Media-Play-02-128.png"></a>
             <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
+            <a href="#" id="urlSelect"><img src="img/Add-Earth-128.png"></a>
+            <a href="#"><img src="img/Media-Play-02-128.png"></a>
+            <a href="#" id="filterPopup" style=""><img src="img/Filtering-128.png"></a>
+            <div id="filter" style="display:none;" class="filter">
+                <input type="search" id="searchText">
+            </div>
         </nav>
+        <!--         <div id="enlargeContent">
+        </div> -->
         <div id="content"></div>
     </div>
 </body>
