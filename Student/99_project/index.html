@@ -26,10 +26,16 @@
     }
     
     .filter {
-        width: 100%;
-        height: 100px;
-        background-color: yellow;
-        /*line-height: 1px;*/
+        padding: 2px;
+        background-color: #000000;
+        opacity: 0.7;
+        /*float: right;*/
+        
+        color: #fff;
+        font-size: 12px;
+        position: absolute;
+        right: 0px;
+        top: 120px;
     }
     
     #content {
@@ -194,21 +200,32 @@
         })
 
         $("#filterPopup").click(function() {
-            $("#filter").css("display", "block");
-            $("#filter").addClass("filter");
+            if ($("#filter").css("display") == "none") {
+                $("#filter").css("display", "block");
+                $("#searchText").focus();
+            } else {
+                $("#filter").css("display", "none");
+
+            }
         });
         $("#searchText").keypress(function(e) {
-            searchTextValue = this.value;
+            searchTextValue = this.value.toLowerCase();
             if (!e) e = window.event;
             var keyCode = e.keyCode || e.which;
             if (keyCode == '13') {
                 // Enter pressed
                 var zitemList = document.getElementsByClassName("zitem");
                 console.log(zitemList.length);
-                for (var i=0;i<zitemList.length;i++)
-                {
+                for (var i = 0; i < zitemList.length; i++) {
                     var zitem = zitemList[i];
-                    console.log($(zitem).children);
+                    var descText = $(zitem).children(".caption").children("a").html().toLowerCase();
+                    if (descText.indexOf(searchTextValue) == -1) {
+                        zitem.style.display = "none";
+                        // console.log("not found --> "+descText);
+                    } else {
+                        zitem.style.display = "block";
+                        // console.log("found --> "+descText);
+                    }
                 }
             }
 
@@ -229,8 +246,7 @@
         enlargeDiv.onclick = function() {
 
             this.style.display = "none";
-            // $(this).remove();
-            // document.body.appendChild(this);
+            window.scrollTo(0, 0);
         }
         enlargeDiv.appendChild(enlargeImg);
 
@@ -343,6 +359,15 @@
                 $(this).find('div.caption').stop(false, true).fadeOut(200);
             });
     }
+    document.onkeyup = function(e){
+        if (!e) e = window.event;
+        var keyCode = e.keyCode || e.which;
+        if (keyCode==27){
+            $("#filter").css("display","none");
+            $(".enlarge").css("display", "none");
+            window.scrollTo(0, 0);
+        }
+    }
     </script>
 </head>
 
@@ -355,6 +380,7 @@
             <a href="#"><img src="img/Media-Play-02-128.png"></a>
             <a href="#" id="filterPopup" style=""><img src="img/Filtering-128.png"></a>
             <div id="filter" style="display:none;" class="filter">
+                <lable for="searchText">Search:</lable>
                 <input type="search" id="searchText">
             </div>
         </nav>
