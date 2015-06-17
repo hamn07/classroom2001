@@ -1,0 +1,141 @@
+﻿在 MAC OS X 安裝 Eclipse IDE for Java EE Developers
+
+
+
+1.	允許從任何來源下載與安裝應用程式
+
+1.1	桌面左上角的蘋果圖示 | 系統偏好設定 | 點一下「安全性與隱私」
+
+1.2	按鎖頭一下... | 點按「解鎖」按鈕
+	(密碼: Pa$$w0rd)
+
+1.3	在「允許從以下來源下載的應用程式」，選擇：「任何來源」，
+	同意「允許任何來源」。
+
+1.4	關閉「安全性與隱私」視窗。
+
+
+
+
+2.	安裝 JDK
+
+2.1	點兩下「下載項目」資料夾的 JavaForOSX2014-001.dmg
+	( 檔案來源: http://www.oracle.com/technetwork/java/javase/downloads/index.html )
+
+2.2	依畫面指示按預設值安裝 JDK。
+
+
+
+
+3.	下載與安裝 Eclipse
+
+3.1	啟動 Safari 瀏覽器，連接到 Eclipse 官網下載 Eclipse IDE for Java EE Developers。
+	網址: http://www.eclipse.org/downloads/
+	<Note> 請下載 EE 那個版本。
+	<Note> 請下載 MAC OS X 64 bit 那個版本。
+	<Note> 為節省下載等待時間，可直接使用本資料夾的「eclipse-jee-luna-R...-cocoa-x86_64.gz」。
+
+3.2	展開桌面右下角的「下載項目」資料夾。
+
+3.3	點兩下「eclipse-jee-luna-R...-cocoa-x86_64.gz」。	
+
+3.4	將解壓縮後的「eclipse」資料夾拖曳到「應用程式」資料夾。
+
+3.5	展開「應用程式 / eclipse」資料夾
+
+3.6	將「圓形有三條橫線的 eclipse」圖示拖曳到桌面底部的 Dock 區域。
+
+
+
+
+
+4.	啟動並完成 Eclipse 的環境設定
+
+4.1	點一下桌面底部 Dock 區域的 Eclipse 捷徑圖示。
+	<Note>如果畫面提示是否要執行 Internet 下載的程式，請點按「打開」。
+	<Note>如果畫面提示需要安裝「Java SE 6 執行階段」，點按「安裝」、「同意」。
+
+4.2	畫面詢問 Workspace 的路徑時，Workspace 請改到：
+	/Applications/MAMP/htdocs
+	（Note: 本步驟假定你已參加 MySQL 課程並且已安裝 MAMP）
+
+4.2	第一次啟動 Eclipse 時會有 Welcome 說明畫面，
+	點按左上角的「Welcome x」關閉即可。
+
+
+
+
+5.	安裝 PHP Development Tools
+
+5.1	啟動 Eclipse
+
+5.2	Eclipse 的功能表 Help | Install New Software...
+
+5.3	Work with 下拉式選項選 Luna 那項，稍候畫面出現軟體清單。
+
+5.4	展開「Web, XML, Java EE...」，勾選並安裝 PHP Development Tools
+
+
+
+
+(重新啟動 Eclipse 之後...)
+
+6.	設定 Eclipse 的 PHP 開發測試環境
+
+6.1	Eclipse 的功能表 File | New | Projects...，
+	選擇 PHP 分類的 PHP Project
+	<Next>
+	Project name 輸入 Lab
+	<Finish>
+	（Note: 通常用出現提示，說要切換到 PHP Perspective，請回答: 是）
+
+
+6.2	Eclipse 的功能表 Eclipse | 偏好設定 | General | Web Browser
+	選擇: Use external web browser
+	<OK>
+
+
+6.3	滑鼠右鍵點按 Lab 專案 | New | PHP file，檔名: test.php
+	<Finish>
+
+6.4	貼入下列內容到 PHP 檔案，存檔後，點按工具列的「綠色三角形播放」按鈕。
+
+<?php
+$s = mysql_connect("localhost", "root", "root") or die(mysql_error());
+echo "OK! connected.";
+mysql_close($s);
+?>
+
+
+
+6.5	繼續完成其他設定...
+
+Eclipse | 偏好設定 | General | Editor | Text Editor | Colors and Fonts 設定字型大小
+
+Eclipse | 偏好設定 | General | Workspace | Text file encoding | Other: UTF-8
+
+Eclipse | 偏好設定 | General | Content Types | Text | HTML | Add... | 輸入: .php
+
+Eclipse | 偏好設定 | General | Web Browser | 選擇 Use external web browser
+
+Eclipse | 偏好設定 | Web | HTML Files | Encoding 選 ISO 10646... (UTF-8)
+
+
+
+
+(Optional)
+
+7.	瀏覽到 www.google.com，下載並安裝 Chrome 瀏覽器。
+
+7.1	點兩下「下載項目」資料夾裏頭的 googlechrome.dmg
+
+7.2	將安裝畫面上方的「Google Chrome」拖曵到的「資料夾」圖案。
+
+7.3	安裝完成後，在「應用程式」資料夾可找到 Google Chrome，
+	將「Google Chrome」圖示拖曳到桌面底部的 Dock 區域。
+	
+7.4	點一下桌面底部 Dock 區域的 Chrome 捷徑圖示。
+	勾選「將 Google Chrome 設為預設瀏覽器」。
+
+7.5	關閉各個視窗，滑鼠右鍵點按桌面的「Google Chrome」磁碟圖示
+	選擇「退出 Google Chrome」。
