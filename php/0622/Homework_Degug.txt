@@ -1,0 +1,49 @@
+﻿下列 StrFind() 函式可取出以「特定文字開頭、特定文字結尾」的字串，
+不過，改用下列程式測試資料:
+$sTest = "...<table>table1</table>...<table>table2</table>...<table>ooo<table>table3</table>ooo</table>...";
+
+卻發現遇到巢套資料時，取出的標籤並不對稱:
+echo StrFind ( $sTest, "<table>", "</table>", 3, TRUE );
+
+
+家庭作業:
+
+1. 請協助修正上述 Bug。
+
+2. 請幫忙加上註解。
+
+3. 有辦法重構程式，將之改得好讀好維護一些嗎?
+
+
+
+<?php
+function StrFind($sSource, $sBeginWith, $sEndWith, $iTh = 1, $bIncludeBeginEnd = TRUE) {
+	$result = "";
+	$iStartPosition = - 1;
+	for($i = 1; $i <= $iTh; $i ++) {
+		$iStartPosition = strpos ( $sSource, $sBeginWith, $iStartPosition + 1 );
+	}
+	if ($iStartPosition < 0)
+		return $result;
+	$iEndPosition = strpos ( $sSource, $sEndWith, $iStartPosition );
+	if ($iEndPosition < 0)
+		return $result;
+	
+	if ($bIncludeBeginEnd) {
+		$result = $sBeginWith . substr ($sSource, $iStartPosition + strlen ( $sBeginWith ), $iEndPosition - $iStartPosition - strlen ( $sBeginWith ) ) . $sEndWith;
+	} 
+	else
+		$result = substr ( $sSource, $iStartPosition + strlen ( $sBeginWith ), $iEndPosition - $iStartPosition - strlen ( $sBeginWith ) );
+	return $result;
+}
+
+$sTest = "...<table>table1</table>...<table>table2</table>...";
+echo StrFind ( $sTest, "<table>", "</table>", 1, TRUE );
+echo "<hr>";
+echo StrFind ( $sTest, "<table>", "</table>", 2, TRUE );
+echo "<hr>";
+echo StrFind ( $sTest, "<table>", "</table>", 2, FALSE );
+
+?>
+
+
