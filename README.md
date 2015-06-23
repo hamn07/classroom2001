@@ -3,7 +3,7 @@
 - ui - change icon to inform user that data status (filtered/music)
 - ui - caption appear in fullscreen mode
 - ui - use light box to enlarge image
-
+- ui - dnd to change sorting
 - serv - upload image to server
 - serv - get picture from picasa
 - serv - Oauth with google
@@ -13,17 +13,6 @@
 
 
 # php
-
-```php
-var_dump($arr);
-
-$sentence = $word1 ." ". $word2;
-
-```
-
-```bash
-sudo systemctl start httpd.service
-```
 
 
 

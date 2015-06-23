@@ -9,10 +9,11 @@
     <!-- load galleria -->
     <!-- css of this page -->
     <style type="text/css">
+	/*最外層div*/
     #wrapper {
         margin: 0 auto;
     }
-    
+    /*導覽列*/
     nav {
         box-shadow: 0 5px 6px #d8d9db;
         border: 1px solid #d8d9db;
@@ -26,6 +27,14 @@
         z-index: 1;
     }
     
+    /*當scroll網頁時，導覽列固定於畫面頂部*/
+    .fixed {
+        position: fixed;
+        left: 0;
+        right: 0;
+    }
+    
+    /* filter輸入框的div */
     .filter {
         padding: 2px;
         background-color: #000000;
@@ -39,6 +48,7 @@
         top: 120px;
     }
     
+	/* 主內容 */
     #content {
         background: #fff;
         height: 1500px;
@@ -47,12 +57,8 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
     
-    .fixed {
-        position: fixed;
-        left: 0;
-        right: 0;
-    }
-    
+
+	/* 個別相片div */
     .zitem {
         width: 200px;
         height: 200px;
@@ -68,7 +74,7 @@
         
         float: left;
     }
-    
+    /* 個別相片說明div */
     .zitem .caption {
         width: 125px;
         height: 30px;
@@ -99,7 +105,7 @@
         opacity: 0.7;
         /* css standard, currently it works in most modern browsers like firefox,  */
     }
-    
+    /* 個別相片說明連結 */
     .zitem .caption a:first-child {
         text-decoration: none;
         color: #fff;
@@ -109,17 +115,7 @@
         padding: 5px;
         display: inline-block;
     }
-    /*    img {
-        border: 0;
-         allow javascript moves the img position
-        
-        position: absolute;
-    }*/
-    
-    .clear {
-        clear: both;
-    }
-    
+	/* 放大圖片div */
     .enlarge {
         /*display: none;*/
         
@@ -171,7 +167,7 @@
                 $('nav').removeClass('fixed').next().css('padding-top', '0');
             }
         });
-
+		// 由網際網路位址加入圖片
         $("#urlSelect").click(function(e) {
             var imgUrl = prompt("Please enter image url:", "http://");
             if (imgUrl != null) {
