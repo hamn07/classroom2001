@@ -1,3 +1,20 @@
+<?php 
+if($_GET['signout']){
+	setcookie("userName","",time() - 60 * 60 * 24);
+	header("Location: index.php");
+}
+if(isset($_POST["btnOK"])){
+	if($_POST["txtUserName"]!=""){
+		setcookie("userName",$_POST["txtUserName"]);
+		if($_COOKIE["lastPage"]!=""){
+			header("Location: {$_COOKIE['lastPage']}");
+		}
+		else {
+			header("Location: index.php");
+		}
+	}
+}
+?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

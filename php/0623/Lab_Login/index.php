@@ -1,3 +1,6 @@
+<?php
+$sUserName = isset ( $_COOKIE ['userName'] ) ? "Hello! {$_COOKIE['userName']}" : "";
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -6,18 +9,21 @@
 </head>
 <body>
 
-<table width="300" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#F2F2F2">
-  <tr>
-    <td align="center" bgcolor="#CCCCCC"><font color="#FFFFFF">會員系統 - 首頁</font></td>
-  </tr>
-  <tr>
-    <td align="center" valign="baseline"><a href="login.php">登入</a> | <a href="secret.php">會員專用頁</a></td>
-  </tr>
-  <tr>
-    <td align="center" bgcolor="#CCCCCC">&nbsp;</td>
-  </tr>
-</table>
-
-
+	<table width="300" border="0" align="center" cellpadding="5"
+		cellspacing="0" bgcolor="#F2F2F2">
+		<tr>
+			<td align="center" bgcolor="#CCCCCC"><font color="#FFFFFF">會員系統 - 首頁</font></td>
+		</tr>
+		<tr>
+		<?php if ($sUserName=="") :?>
+			<td align="center" valign="Wbaseline"><a href="login.php">登入</a> | <a href="secret.php">會員專用頁</a></td>
+		<?php else : ?>
+			<td align="center" valign="Wbaseline"><a href="login.php?signout=1">登出</a> | <a href="secret.php">會員專用頁</a></td>
+		<?php endif?>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#CCCCCC"><?php echo $sUserName ?>&nbsp;</td>
+		</tr>
+	</table>
 </body>
 </html>

@@ -15,10 +15,13 @@
 # php
 
 ```php
-var_dump($arr)
+var_dump($arr);
+
+$sentence = $word1 ." ". $word2;
+
 ```
 
-```shell
+```bash
 sudo systemctl start httpd.service
 ```
 

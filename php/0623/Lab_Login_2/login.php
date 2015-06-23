@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST["btnHome"]))
 {
 	header("Location: index.php");

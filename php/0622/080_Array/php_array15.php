@@ -1,6 +1,7 @@
 <?php
 function cmp($a, $b)
 {
+	echo "cmp : " . $a . "," . $b . "<br>";
     if ($a == $b) {
         return 0;
     }
