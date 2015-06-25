@@ -1,0 +1,23 @@
+use test;
+
+drop table Lab;
+
+create table Lab
+(
+  id int auto_increment primary key,
+  data int not null
+) engine = MyISAM;
+-- ) engine = InnoDB;
+
+insert into Lab (data) values (100);
+
+select * from Lab;
+
+start transaction;
+
+update lab set data = 200 where id = 1;
+
+-- rollback transaction;
+rollback;
+
+select * from Lab;

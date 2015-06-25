@@ -9,11 +9,13 @@
     <!-- load galleria -->
     <!-- css of this page -->
     <style type="text/css">
-	/*最外層div*/
+    /*最外層div*/
+    
     #wrapper {
         margin: 0 auto;
     }
     /*導覽列*/
+    
     nav {
         box-shadow: 0 5px 6px #d8d9db;
         border: 1px solid #d8d9db;
@@ -26,15 +28,15 @@
         position: relative;
         z-index: 1;
     }
-    
     /*當scroll網頁時，導覽列固定於畫面頂部*/
+    
     .fixed {
         position: fixed;
         left: 0;
         right: 0;
     }
-    
     /* filter輸入框的div */
+    
     .filter {
         padding: 2px;
         background-color: #000000;
@@ -47,8 +49,8 @@
         right: 0px;
         top: 120px;
     }
+    /* 主內容 */
     
-	/* 主內容 */
     #content {
         background: #fff;
         height: 1500px;
@@ -56,9 +58,8 @@
         
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
+    /* 個別相片div */
     
-
-	/* 個別相片div */
     .zitem {
         width: 200px;
         height: 200px;
@@ -75,6 +76,7 @@
         float: left;
     }
     /* 個別相片說明div */
+    
     .zitem .caption {
         width: 125px;
         height: 30px;
@@ -106,6 +108,7 @@
         /* css standard, currently it works in most modern browsers like firefox,  */
     }
     /* 個別相片說明連結 */
+    
     .zitem .caption a:first-child {
         text-decoration: none;
         color: #fff;
@@ -115,7 +118,8 @@
         padding: 5px;
         display: inline-block;
     }
-	/* 放大圖片div */
+    /* 放大圖片div */
+    
     .enlarge {
         /*display: none;*/
         
@@ -139,49 +143,60 @@
     <!-- js of this page -->
     <!-- *************** -->
     <script type="text/javascript">
+    var xmlhttp;
+    console.log(window.XMLHttpRequest);
+    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    }
     // in order to regex filename from url of an image
     String.prototype.filename = function(extension) {
-        var s = this.replace(/\\/g, '/');
-        s = s.substring(s.lastIndexOf('/') + 1);
-        return extension ? s.replace(/[?#].+$/, '') : s.split('.')[0];
-    }
-    var imgCount = 0;
-    $(document).ready(function() {
-
+            var s = this.replace(/\\/g, '/');
+            s = s.substring(s.lastIndexOf('/') + 1);
+            return extension ? s.replace(/[?#].+$/, '') : s.split('.')[0];
+        }
         //Calculate the height of <header>
         //Use outerHeight() instead of height() if have padding
-        var aboveHeight = $('nav').outerHeight();
+    var aboveHeight = $('nav').outerHeight();
 
-        // when scroll
-        $(window).scroll(function() {
+    // when scroll
+    $(window).scroll(function() {
 
-            //if scrolled down more than the header's height
-            if ($(window).scrollTop() > aboveHeight) {
+        //if scrolled down more than the header's height
+        if ($(window).scrollTop() > aboveHeight) {
 
-                // if yes, add "fixed" class to the <nav>
-                // add padding top to the #content (value is same as the height of the nav)
-                $('nav').addClass('fixed').css('top', '0').next().css('padding-top', '60px');
-            } else {
+            // if yes, add "fixed" class to the <nav>
+            // add padding top to the #content (value is same as the height of the nav)
+            $('nav').addClass('fixed').css('top', '0').next().css('padding-top', '60px');
+        } else {
 
-                // when scroll up or less than aboveHeight, remove the "fixed" class, and the padding-top
-                $('nav').removeClass('fixed').next().css('padding-top', '0');
-            }
-        });
-		// 由網際網路位址加入圖片
+            // when scroll up or less than aboveHeight, remove the "fixed" class, and the padding-top
+            $('nav').removeClass('fixed').next().css('padding-top', '0');
+        }
+    });
+
+
+    var imgCount = 0;
+    //----------------
+    // document ready
+    //----------------
+    $(document).ready(function() {
+
+
+        // 由網際網路位址加入圖片
         $("#urlSelect").click(function(e) {
             var imgUrl = prompt("Please enter image url:", "http://");
             if (imgUrl != null) {
                 myFuncRenderImage(imgUrl, imgUrl.filename(), false);
             }
         })
-
+        // 由client端filesystem加入圖片
         $("#fileSelect").click(function(e) {
             if ($("#fileElem")) {
                 $("#fileElem").click();
             }
             e.preventDefault();
-
         });
+        // 由client端filesystem加入圖片
         $("#fileElem").change(function(e) {
             // 檔案(array)
             var fileList = this.files;
@@ -196,14 +211,16 @@
                 myFuncRenderImage(objectURL, file.name, true);
             }
         })
+        // 由client端filesystem加入音樂
         $("#audioSelect").click(function(e) {
             if ($("#audioElem")) {
                 $("#audioElem").click();
-                
+
             }
             e.preventDefault();
 
         });
+        // 由client端filesystem加入音樂
         $("#audioElem").change(function(e) {
             console.log($('#audioPlay'));
             $('#audioPlay').remove();
@@ -225,6 +242,7 @@
                 }).appendTo($('nav'));
             }
         })
+        // filter的按鈕click事件
         $("#filterPopup").click(function() {
             if ($("#filter").css("display") == "none") {
                 $("#filter").css("display", "block");
@@ -257,7 +275,7 @@
             }
         });
 
-        // galleria show
+        // 全螢幕播放slide+music
         $('#play').click(function() {
             var imgItemArr = document.getElementsByClassName("zitem");
             var data = [];
@@ -271,18 +289,25 @@
                     });
                 }
             }
+            // 使用遞迴搭配setTimeout的方式來輪播照片
             var fullscreenPlay = function(i, repo) {
-                // break point
+                // recursive - break point
                 if (i == repo.length) {
+                    // 不repeat照片
                     // return;
+                    // repeat照片
                     i = 0;
                 }
+                // 當離開fullscreen mode後, 要停止輪播
+                // 但第一張照片(i=0)進到迴圈時可能還沒到fullscreen mode, 所以再&i
                 if (!document.webkitIsFullScreen && i) {
                     return;
                 }
 
-                // do something here
+                // recursive - do something here
+                // 清空#contentEnlarge
                 $("#contentEnlarge").empty();
+                // 將圖片append到#contentEnlarge
                 $('<img>', {
                     src: repo[i].image,
                     class: 'enlarge',
@@ -294,28 +319,32 @@
                 }).appendTo("#contentEnlarge");
 
 
-                // recursive
+                // recursive - continue point
                 setTimeout(function() {
                     fullscreenPlay(i + 1, repo);
 
                 }, 5000);
             }
+            // 搜尋不到image
             if (!data.length) {
                 alert("no image loaded!");
                 return;
             } else {
+                // 將#contentEnlarge於fullscreen mode播放
                 var elem = document.getElementById('contentEnlarge');
                 if (document.webkitFullscreenElement) {
                     document.webkitCancelFullScreen();
                 } else {
                     elem.webkitRequestFullScreen();
                 };
+                // 播放音樂
                 if (document.getElementById("audioPlay") != null) {
                     document.getElementById("audioPlay").play();
                 }
-
+                // 使用遞迴搭配setTimeout的方式來輪播照片
                 fullscreenPlay(0, data);
 
+                // 
                 // $('<div>', {
                 //     id: 'galleria-div'
                 // }).appendTo('#contentEnlarge');
@@ -340,7 +369,9 @@
             }
         });
     });
+    // 功能: 創建圖片div, 並置入#content裡
     // url: 圖片位址
+    // fileName: 圖片說明
     // isLocal: 是否為local image upload
     function myFuncRenderImage(url, fileName, isLocal) {
 
@@ -378,6 +409,7 @@
                     }
                 },
                 load: function() {
+                    // 若不再操作可將之關閉
                     // window.URL.revokeObjectURL(this.src);
                 },
             }

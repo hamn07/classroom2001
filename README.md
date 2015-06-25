@@ -4,6 +4,7 @@
 - ui - caption appear in fullscreen mode
 - ui - use light box to enlarge image
 - ui - dnd to change sorting
+- ui - dnd to load image
 - serv - upload image to server
 - serv - get picture from picasa
 - serv - Oauth with google

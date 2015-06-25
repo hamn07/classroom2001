@@ -1,0 +1,31 @@
+create database workout;
+use workout;
+
+-- 建立資料表
+create table friends
+(
+  fid int auto_increment not null primary key,
+  cname char(10) null,
+  ename varchar(30) null,
+  tel varchar(30) null
+);
+
+
+-- 修改資料表結構 - 加入新的欄位
+alter table friends
+  add email varchar(30) default 'someone@somewhere.com';
+
+-- 修改資料表結構 - 變更欄位定義
+alter table friends
+  modify email varchar(40);
+
+describe friends;
+
+alter table friends
+  modify email varchar(40) default 'who@where.com';
+
+describe friends;
+
+-- -- 修改資料表結構 - 刪除欄位
+alter table friends
+  drop column email;
