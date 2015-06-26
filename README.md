@@ -8,7 +8,7 @@
 - serv - upload image to server
 - serv - get picture from picasa
 - serv - Oauth with google
-
+- db - create schema
 
 # html - html/css/javascript/jquery mobile
 
