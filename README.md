@@ -10,10 +10,17 @@
 - serv - Oauth with google
 - db - create schema
 
+## fix
+- white space at the bottom of image within div(border)
+```html
+img 
+float:left
+```
+
 # html - html/css/javascript/jquery mobile
 
 
-# php
+# php - php/mysql
 
 
 

@@ -21,10 +21,6 @@
         border: 1px solid #d8d9db;
         background-color: #fff;
         height: 120px;
-        /*width: 960px;*/
-        /*margin-left: -10px;*/
-        /*line-height: 50px;*/
-        
         position: relative;
         z-index: 1;
     }
@@ -38,11 +34,10 @@
     /* filter輸入框的div */
     
     .filter {
+        display: none;
         padding: 2px;
         background-color: #000000;
         opacity: 0.7;
-        /*float: right;*/
-        
         color: #fff;
         font-size: 12px;
         position: absolute;
@@ -53,32 +48,27 @@
     
     #content {
         background: #fff;
-        height: 1500px;
+        /*height: 1500px;*/
         /* presetting the height */
         
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
     /* 個別圖片div */
     
-    .zitem {
-        /*width: 200px;*/
-        /*height: 200px;*/
-        border: 4px solid #222;
+    .image-frame {
+        /*border: 4px solid #222;*/
+        padding: 5px;
+        border: 1px dashed #717171;
         margin: 5px 5px 5px 0;
-        /* required to hide the image after resized */
-        
         overflow: hidden;
-        /* for child absolute position */
-        
         position: relative;
-        /* display div in line */
-        
         float: left;
     }
     /* 個別圖片說明div */
     
     .caption {
         /*width: 125px;*/
+        
         height: 30px;
         background: #000;
         color: #fff;
@@ -107,47 +97,53 @@
         opacity: 0.7;
         /* css standard, currently it works in most modern browsers like firefox,  */
     }
-    /* 個別相片說明連結 */
+    /* 個別圖片description */
     
-    .zitem .caption a:first-child {
+    .image-frame .caption a:first-child {
         text-decoration: none;
         color: #fff;
         font-size: 12px;
-        /* add spacing and make the whole row clickable*/
-        
         padding: 5px;
         display: inline-block;
     }
     /* 放大圖片div */
     
     .enlarge {
-        /*display: none;*/
-        
         width: 100%;
-        /*height: 100;*/
-        
-        border: 4px solid #222;
-        margin: 5px 5px 5px 0;
-        /* required to hide the image after resized */
-        
-        overflow: hidden;
-        /* for child absolute position */
-        
-        position: relative;
-        /* display div in line */
-        
+        display: inline-block;
+    }
+    
+    .enlarge img {
+        max-width: 100%;
+        max-height: 100%;
         float: left;
     }
     </style>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav>
+            <a href="#" id="fileSelect"><img src="img/Folder-Add-01-128.png" class="icon"></a>
+            <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
+            <a href="#" id="urlSelect"><img src="img/Add-Earth-128.png"></a>
+            <a href="#" id="play"><img src="img/Media-Play-02-128.png"></a>
+            <a href="#" id="filterPopup" style=""><img src="img/Filtering-128.png"></a>
+            <div id="filter" class="filter">
+                <input type="search" id="searchText" placeholder="keyword">
+            </div>
+            <a href="#" id="audioSelect"><img src="img/Document-Music-01-128.png" class="icon"></a>
+            <input type="file" id="audioElem" accept="audio/*" style="display:none">
+        </nav>
+        <div id="contentEnlarge" class="enlarge"></div>
+        <div id="content"></div>
+    </div>
+</body>
     <!-- *************** -->
     <!-- js of this page -->
     <!-- *************** -->
     <script type="text/javascript">
-    var xmlhttp;
-    console.log(window.XMLHttpRequest);
-    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    }
     // in order to regex filename from url of an image
     String.prototype.filename = function(extension) {
             var s = this.replace(/\\/g, '/');
@@ -184,12 +180,12 @@
 
         // 由網際網路位址加入圖片
         $("#urlSelect").click(function(e) {
-            var imgUrl = prompt("Please enter image url:", "http://");
-            if (imgUrl != null) {
-                myFuncRenderImage(imgUrl, imgUrl.filename(), false);
-            }
-        })
-        // 由client端filesystem加入圖片
+                var imgUrl = prompt("Please enter image url:", "http://");
+                if (imgUrl != null) {
+                    myFuncRenderImage(imgUrl, imgUrl.filename(), false);
+                }
+            })
+            // 由client端filesystem加入圖片
         $("#fileSelect").click(function(e) {
             if ($("#fileElem")) {
                 $("#fileElem").click();
@@ -198,20 +194,20 @@
         });
         // 由client端filesystem加入圖片
         $("#fileElem").change(function(e) {
-            // 檔案(array)
-            var fileList = this.files;
-            // 檔案個數
-            var numFiles = fileList.length;
-            for (var i = 0; i < numFiles; i++) {
-                // 取得檔案物件
-                var file = fileList[i];
-                // 轉換成local url
-                var objectURL = window.URL.createObjectURL(file);
+                // 檔案(array)
+                var fileList = this.files;
+                // 檔案個數
+                var numFiles = fileList.length;
+                for (var i = 0; i < numFiles; i++) {
+                    // 取得檔案物件
+                    var file = fileList[i];
+                    // 轉換成local url
+                    var objectURL = window.URL.createObjectURL(file);
 
-                myFuncRenderImage(objectURL, file.name, true);
-            }
-        })
-        // 由client端filesystem加入音樂
+                    myFuncRenderImage(objectURL, file.name, true);
+                }
+            })
+            // 由client端filesystem加入音樂
         $("#audioSelect").click(function(e) {
             if ($("#audioElem")) {
                 $("#audioElem").click();
@@ -222,27 +218,27 @@
         });
         // 由client端filesystem加入音樂
         $("#audioElem").change(function(e) {
-            console.log($('#audioPlay'));
-            $('#audioPlay').remove();
-            // 檔案(array)
-            var fileList = this.files;
-            // 檔案個數
-            var numFiles = fileList.length;
-            for (var i = 0; i < numFiles; i++) {
-                // 取得檔案物件
-                var file = fileList[i];
-                // 轉換成local url
-                var objectURL = window.URL.createObjectURL(file);
+                console.log($('#audioPlay'));
+                $('#audioPlay').remove();
+                // 檔案(array)
+                var fileList = this.files;
+                // 檔案個數
+                var numFiles = fileList.length;
+                for (var i = 0; i < numFiles; i++) {
+                    // 取得檔案物件
+                    var file = fileList[i];
+                    // 轉換成local url
+                    var objectURL = window.URL.createObjectURL(file);
 
-                $('<audio>', {
-                    id: 'audioPlay',
-                    src: objectURL,
-                    // autoplay: true,
-                    loop: true,
-                }).appendTo($('nav'));
-            }
-        })
-        // filter的按鈕click事件
+                    $('<audio>', {
+                        id: 'audioPlay',
+                        src: objectURL,
+                        // autoplay: true,
+                        loop: true,
+                    }).appendTo($('nav'));
+                }
+            })
+            // filter的按鈕click事件
         $("#filterPopup").click(function() {
             if ($("#filter").css("display") == "none") {
                 $("#filter").css("display", "block");
@@ -260,15 +256,15 @@
             var keyCode = e.keyCode || e.which;
             if (keyCode == '13') {
                 // Enter pressed
-                var zitemList = document.getElementsByClassName("zitem");
-                for (var i = 0; i < zitemList.length; i++) {
-                    var zitem = zitemList[i];
-                    var descText = $(zitem).children(".caption").children("a").html().toLowerCase();
+                var imgList = document.getElementsByClassName("image-frame");
+                for (var i = 0; i < imgList.length; i++) {
+                    var img = imgList[i];
+                    var descText = $(img).children(".caption").children("a").html().toLowerCase();
                     if (descText.indexOf(searchTextValue) == -1) {
-                        zitem.style.display = "none";
+                        img.style.display = "none";
                         // console.log("not found --> "+descText);
                     } else {
-                        zitem.style.display = "block";
+                        img.style.display = "block";
                         // console.log("found --> "+descText);
                     }
                 }
@@ -277,7 +273,7 @@
 
         // 全螢幕播放slide+music
         $('#play').click(function() {
-            var imgItemArr = document.getElementsByClassName("zitem");
+            var imgItemArr = document.getElementsByClassName("image-frame");
             var data = [];
             data.length = 0;
 
@@ -291,41 +287,41 @@
             }
             // 使用遞迴搭配setTimeout的方式來輪播照片
             var fullscreenPlay = function(i, repo) {
-                // recursive - break point
-                if (i == repo.length) {
-                    // 不repeat照片
-                    // return;
-                    // repeat照片
-                    i = 0;
+                    // recursive - break point
+                    if (i == repo.length) {
+                        // 不repeat照片
+                        // return;
+                        // repeat照片
+                        i = 0;
+                    }
+                    // 當離開fullscreen mode後, 要停止輪播
+                    // 但第一張照片(i=0)進到迴圈時可能還沒到fullscreen mode, 所以再&i
+                    if (!document.webkitIsFullScreen && i) {
+                        return;
+                    }
+
+                    // recursive - do something here
+                    // 清空#contentEnlarge
+                    $("#contentEnlarge").empty();
+                    // 將圖片append到#contentEnlarge
+                    $('<img>', {
+                        src: repo[i].image,
+                        // class: 'enlarge',
+                        // on: {
+                        //     click: function() {
+                        //         $("#contentEnlarge").empty();
+                        //     }
+                        // }
+                    }).appendTo("#contentEnlarge");
+
+
+                    // recursive - continue point
+                    setTimeout(function() {
+                        fullscreenPlay(i + 1, repo);
+
+                    }, 5000);
                 }
-                // 當離開fullscreen mode後, 要停止輪播
-                // 但第一張照片(i=0)進到迴圈時可能還沒到fullscreen mode, 所以再&i
-                if (!document.webkitIsFullScreen && i) {
-                    return;
-                }
-
-                // recursive - do something here
-                // 清空#contentEnlarge
-                $("#contentEnlarge").empty();
-                // 將圖片append到#contentEnlarge
-                $('<img>', {
-                    src: repo[i].image,
-                    class: 'enlarge',
-                    // on: {
-                    //     click: function() {
-                    //         $("#contentEnlarge").empty();
-                    //     }
-                    // }
-                }).appendTo("#contentEnlarge");
-
-
-                // recursive - continue point
-                setTimeout(function() {
-                    fullscreenPlay(i + 1, repo);
-
-                }, 5000);
-            }
-            // 搜尋不到image
+                // 搜尋不到image
             if (!data.length) {
                 alert("no image loaded!");
                 return;
@@ -377,7 +373,7 @@
 
         // 建立div物件，並將img物件餵給它
         var imgItem = document.createElement("div");
-        imgItem.className = "zitem";
+        imgItem.className = "image-frame";
         $("#content").prepend(imgItem);
 
 
@@ -385,14 +381,12 @@
         var $img = $("<img>", {
             src: url,
             css: {
-                'max-width' : 'auto',
-                'max-height' : '15em',
+                'max-width': 'auto',
+                'max-height': '15em',
+                'float': 'left',
             },
-            // width: $('.zitem').width(),
-            // height: $('.zitem').height(),
             on: {
                 click: function() {
-                    console.log('aa');
 
                     if ($("#contentEnlarge").children().length) {
 
@@ -403,7 +397,6 @@
                         // add img to #contentEnlarge
                         $('<img>', {
                             src: this.src,
-                            class: 'enlarge',
                             on: {
                                 click: function() {
                                     $("#contentEnlarge").empty();
@@ -428,7 +421,6 @@
         // 建立caption
         var $caption = $('<div>', {
             class: 'caption',
-            // width: $('.zitem').width()
         });
         // append desc
         $caption.append($('<a>', {
@@ -453,7 +445,7 @@
         }).append($('<img>', {
             src: "img/Cancel-24.png",
             click: function() {
-                $(this).parent("a").parent().parent(".zitem").remove();
+                $(this).parent("a").parent().parent(".image-frame").remove();
             }
         })));
 
@@ -513,26 +505,4 @@
         }
     }
     </script>
-</head>
-
-<body>
-    <div id="wrapper">
-        <nav>
-            <a href="#" id="fileSelect"><img src="img/Folder-Add-01-128.png" class="icon"></a>
-            <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
-            <a href="#" id="urlSelect"><img src="img/Add-Earth-128.png"></a>
-            <a href="#" id="play"><img src="img/Media-Play-02-128.png"></a>
-            <a href="#" id="filterPopup" style=""><img src="img/Filtering-128.png"></a>
-            <div id="filter" style="display:none;" class="filter">
-                <lable for="searchText">Search:</lable>
-                <input type="search" id="searchText">
-            </div>
-            <a href="#" id="audioSelect"><img src="img/Document-Music-01-128.png" class="icon"></a>
-            <input type="file" id="audioElem" multiple accept="audio/*" style="display:none">
-        </nav>
-        <div id="contentEnlarge"></div>
-        <div id="content"></div>
-    </div>
-</body>
-
 </html>
