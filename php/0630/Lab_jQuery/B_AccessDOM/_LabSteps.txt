@@ -1,0 +1,152 @@
+
+1.	用 HTML Editor 開啟 AccessDOM.html，檢視文件的內容。
+
+
+2.	分別貼入下列程式到「// 在這裏寫程式」，每完成一段，就以瀏覽器測試一次:
+	(此外，請留意 $(xxx) 裏頭 xxx 的語法，完全就跟之前 CSS 教的 Selector 一模一樣。)
+
+// 210:
+                $("#report").text("line1<br>Line2");
+
+
+
+// 220:
+                $("#report").html("line1<br>Line2");
+
+
+
+// 230:
+                $("#report").append("line1<br>Line2");
+
+
+
+// 240
+                var s = $("#aTextField").val();
+                $("#report").append(s);
+
+
+
+// 250
+                var s = $("input[name='radioGroup']:checked").val();
+                $("#report").append(s);
+
+
+
+// 260
+                var s = $("input[name='radioGroup']").eq(2).attr("checked", "checked");
+                $("#report").append("radio C selected.");
+
+
+
+
+// 270
+                var s = $("#radioA").attr("checked", "checked");
+                $("#report").append("radio A selected.");
+
+
+
+
+// 280
+                var s = $("#radioA").attr("disabled", true);
+                $("#report").append("radio A disabled.");
+
+
+
+// 290
+                // $("#aTextField").val(168);
+				$("#aTextField")[0].value = "123";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<參考解答>>
+4. 如果想選取所有的超連結(a 元素)，Selector 該怎麼寫?
+a
+
+5. 如果想選取 name="checkboxes" 的核取方塊，Selector 該怎麼寫?
+input[name="checkboxes"]
+

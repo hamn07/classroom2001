@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnTry").click(function () {
+                // 在這裏寫程式
+                $("#betaRibbon").addClass("beta-ribbon");
+                $("#report").text($("#betaRibbon").css("font-family"));
+                $("#betaRibbon").css({"font-family": "Arial", "font-weight": "bold"});
+            })
+        });
+    </script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+<div class="beta-ribbon-wrapper">
+  <div id="betaRibbon">
+    <a href="/about/#beta">Beta</a>
+  </div>
+</div>
+
+<div id="report">Report:<br></div>
+<hr>
+<form action="" method="put" onsubmit="return false;">
+  <button type="button" id="btnTry">Try</button>
+</form>
+</body>
+</html>

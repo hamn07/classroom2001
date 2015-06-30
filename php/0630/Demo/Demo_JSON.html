@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LocalStorage Lab</title>
+
+<style type="text/css">
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.125em;
+	margin: 20px;
+}
+
+h1 {
+	text-align: center;
+	border-bottom: 2px solid #009;
+	margin-bottom: 50px;
+}
+</style>
+
+</head>
+<body>
+
+	<H1>JSON Demo</H1>
+	<p>Object to JSON string:</p>
+	<script type="text/javascript">
+	
+		var obj = new Object();
+		obj.firstName = "Wolfgang";
+		obj.lastName = "Chien";
+		var s = JSON.stringify(obj);  // Object to String
+		document.write(s + '<br>');
+		
+		// 物件陣列，用中括號框住一組以 JSON 格式表現的物件
+		var objArray = [
+			{"firstName":"Derek","lastName":"Jeter"}, 
+			{"firstName":"Jeremy","lastName":"Lin"}, 
+			{"firstName":"Lionel","lastName":"Messi"}
+		];
+		s = objArray[2].lastName;
+		document.write(s + '<br>');
+		s = JSON.stringify(objArray);
+		document.write(s + '<br>');
+		
+	</script>
+
+	<br><hr>
+	<p>JSON string to Object:</p>
+	<script type="text/javascript">
+	
+		var s = '  [{"firstName":"Derek","lastName":"Jeter"},{"firstName":"Jeremy","lastName":"Lin"},{"firstName":"Lionel","lastName":"Messi"}]  ';
+	
+		// eval() 也懂 JSON? 
+		// 略懂!
+		var obj = eval("(" + s + ")");
+		s = obj[0].lastName;
+		document.write(s + '<br>');
+	  
+	</script>
+
+</body>
+</html>
