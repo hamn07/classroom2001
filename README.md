@@ -1,10 +1,10 @@
 # project
 ## todo
-- ui - change icon to inform user that data status (filtered/music)
 - ui - caption appear in fullscreen mode
-- ui - use light box to enlarge image
 - ui - dnd to change sorting
 - ui - dnd to load image
+- ui - fullscreen on different browser engine
+- ui - divide function and description of image
 - serv - upload image to server
 - serv - get picture from picasa
 - serv - Oauth with google
@@ -16,6 +16,8 @@
 img 
 float:left
 ```
+- ui - use light box to enlarge image
+- ui - change icon to inform user that data status (filtered/music)
 
 # html - html/css/javascript/jquery mobile
 
