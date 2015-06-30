@@ -5,7 +5,7 @@ header("content-type:text/html; charset=utf-8");
 // 0. 請先建立 Class 資料庫 （執行 class.sql）
 
 // 1. 連接資料庫伺服器
-$link = mysql_connect("127.0.0.1", "root", 'Pa$$w0rd') or die(mysql_error());
+$link = mysql_connect("127.0.0.1", "root", 'root') or die(mysql_error());
 
 $result = mysql_query("set names utf8", $link);
 mysql_select_db("class", $link);
