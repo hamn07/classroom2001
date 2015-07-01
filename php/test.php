@@ -8,6 +8,7 @@
 </head>
 <body>
 <?php
+phpinfo(INFO_GENERAL);
 $myArr = array (
 		'img1',
 		'img3',
