@@ -17,14 +17,14 @@
         text-align: center;
         vertical-align: middle;
     }
-    
+
     .fn:before {
         content: '';
         display: inline-block;
         vertical-align: middle;
         height: 100%;
     }
-    
+
     .fn a {
         display: inline-block;
         vertical-align: middle;
@@ -36,27 +36,33 @@
 <body>
     <div class="image-frame">
         <a href=""><img src="../sample-image-music/20150219-currytrophy-760.jpg" style="max-height: 15em; float: left;"></a>
-        <div class="caption">
-            <a href="#">20150219-currytrophy-760.jpg</a>
+        <div class="caption">20150219-currytrophy-760.jpg
+            <!-- <a href="#">20150219-currytrophy-760.jpg</a> -->
             <!-- <a href="#" style="right: 1px; float: right;"><img src="../images/Cancel-24.png"></a> -->
         </div>
         <div class="fn">
-            <a href="#"><img src="../images/Cancel-48.png" alt=""></a>
-            <a href="#"><img src="../images/Text-Editor-48.png" alt=""></a>
+          <a href="#"><img src="../images/Cancel-48.png" alt=""></a>
+          <a href="#"><img src="../images/Text-Editor-48.png" alt=""></a>
         </div>
     </div>
     <div class="image-frame">
         <a href=""><img src="../sample-image-music/tumblr_ndm2w1B7kE1tggypqo1_500.jpg" style="max-height: 15em; float: left;"></a>
-        <div class="caption">
-            <a href="#">tumblr_ndm2w1B7kE1tggypqo1_500.jpg</a>
+        <span class="caption">tumblr_ndm2w1B7kE1tggypqo1_500.jpg
+            <!-- <a href="#">tumblr_ndm2w1B7kE1tggypqo1_500.jpg</a> -->
             <!-- <a href="#" style="right: 1px; float: right;"><img src="../images/Cancel-24.png"></a> -->
-        </div>
+        </span>
         <div class="fn">
-            <a href="#" style="display: inline-block;vertical-align: middle;"><img src="../images/Cancel-48.png" alt=""></a>
-            <a href="#" style="display: inline-block;vertical-align: middle;"><img src="../images/Text-Editor-48.png" alt=""></a>
+            <a href="#" style="display: inline-block;vertical-align: middle;"><img src="../images/Cancel-48.png" alt="" onclick="removeImage(this)"></a>
+            <a href="#" style="display: inline-block;vertical-align: middle;"><img src="../images/Text-Editor-48.png" alt="" onclick="editText(this)" ></a>
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
+      function removeImage(imgIcon){
+        $(imgIcon).parents('.image-frame').remove();
+      }
+      function editText(imgIcon){
+        console.log($(imgIcon).parents('.image-frame').children('.caption').text());
+      }
     </script>
 </body>
 
