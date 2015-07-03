@@ -1,0 +1,5 @@
+﻿關於「如何下載網頁」比較完整的解決方案:
+
+Techniques for Mastering cURL
+http://code.tutsplus.com/tutorials/techniques-for-mastering-curl--net-8470
+

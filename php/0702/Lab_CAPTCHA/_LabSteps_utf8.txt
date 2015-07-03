@@ -1,0 +1,157 @@
+﻿Lab: 在網頁實作 CAPTCHA 驗證圖片
+
+在瀏覽器開啟 http://www.phpcaptcha.org/ 
+試用、閱讀說明文件、下載檔案，然後試作一遍。
+
+
+（防雷頁....）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.  下載與安裝
+1.1 下載 securimage.zip
+1.2 解壓縮 securimage.zip
+1.3 將解壓縮後的 securimage 資料夾複製到工作目錄
+
+
+2.  Client端試用
+
+2.1 建立一個新的 HTML 文件，檔名: testCaptcha.php
+
+2.2 在 <body> 內部置入下列 HTML:
+
+<img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image" />
+
+2.3 存檔並且執行 testCaptcha.php，觀察是否出現驗證圖片。
+
+2.4 繼續編寫下列 HTML:
+<input type="text" name="captcha_code" size="10" maxlength="6" />
+<a href="#" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false">[ 更換圖片 ]</a>
+
+2.5 存檔並且執行 testCaptcha.php，觀察是否出現驗證圖片。
+
+
+3.  傳送到伺服器判斷圖文是否相符
+
+3.1 將上述 2.2 與 2.4 的 HTML 用下列的 form 包起來，
+    並且以 post 方法將表單資料傳送到 processData.php
+    
+3.2 在表單置入一個 submit 型的按鈕控制項，完成後的 HTML 類似這樣:
+
+<form method="post" action="processData.php">
+    <img id="captcha" src="securimage/securimage_show.php" alt="驗證圖片" />
+    <input type="text" name="captcha_code" size="10" maxlength="6" />
+    <a href="#" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false">[ 更換圖片 ]</a>
+    <input type="submit" name="btnOK" value="OK, send it.">
+</form>
+
+3.3 新建一個 PHP 檔，檔名: processData.php
+
+3.4 PHP 檔案的第一行編寫下列指令:
+<?php 
+  session_start(); 
+
+?>
+
+3.5 繼續寫作下列程式
+
+include_once('securimage/securimage.php');
+$securimage = new Securimage();
+
+if ($securimage->check($_POST['captcha_code']) == false) {
+    header("Content-Type:text/html; charset=utf-8");
+    echo "呃... 不對喔!<br /><br />";
+    echo "請 <a href='javascript:history.go(-1)'>回上一頁</a>重試一次。";
+    exit;
+}
+
+
+3.6 存檔並且執行 testCaptcha.php，輸入文字後，送出表單資料給 processData.php 進行測試。
+
+
+
+<?php
+session_start(); 
+
+include_once('securimage/securimage.php');
+$securimage = new Securimage();
+
+if ($securimage->check($_POST['captcha_code']) == false) {
+    header("Content-Type:text/html; charset=utf-8");
+    echo "呃... 不對喔!<br /><br />";
+    echo "請 <a href='javascript:history.go(-1)'>回上一頁</a>重試一次。";
+    exit;
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+Test OK!
+
+</body>
+</html>
+
+
+

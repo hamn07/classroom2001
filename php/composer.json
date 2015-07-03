@@ -1,0 +1,13 @@
+{
+    "name": "pturalbe/php",
+    "description": "classroom2001 PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henry Lee",
+            "email": "hamn07@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
