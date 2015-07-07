@@ -2,6 +2,15 @@
 public class TwId {
 	private String id="";
 	private static final String sAlphabet="ABCDEFGHJKLMNPQRSTUVXYWZIO";
+	
+	static{
+		System.out.println("C");
+	}
+	
+	{
+		System.out.println("B");
+	}
+	
 	TwId(){
 		this((int) (Math.random()*2)==0,(int) (Math.random()*26));
 	}
@@ -83,5 +92,6 @@ public class TwId {
 	public static void main(String[] args) {
 		TwId id = new TwId(10);
 		System.out.println(TwId.isCheckOkRegex(id.getId()));
+		TwId.isCheckOkRegex("L143221414");
 	}
 }

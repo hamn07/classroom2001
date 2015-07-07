@@ -5,6 +5,9 @@ public class Bike {
 	Bike(){
 		speed=1;
 	}
+	Bike(double d){
+		speed=d;
+	}
 	
 	void upSpeed(){
 		speed*=1.2;
