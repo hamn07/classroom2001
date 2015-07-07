@@ -45,8 +45,8 @@ public class GuessGame extends JFrame{
 	void pressGuess(){
 		System.out.println(number.getText());
 	}
-	String createAnswer(int d){
-		return "";
+	static String createAnswer(int d){
+		return "1286";
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
