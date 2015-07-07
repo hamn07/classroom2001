@@ -132,7 +132,7 @@
           if (imgItemArr[i].style.display != 'none') {
             data.push({
               image: imgItemArr[i].children[0].children[0].src,
-              title: imgItemArr[i].children[1].children[0].innerHTML
+              // title: imgItemArr[i].children[1].children[0].innerHTML
             });
           }
         }
@@ -229,7 +229,7 @@
 
 
       // 建立img物件，並將src設定為local url
-      var $img = $("<img>", {
+      $("<img>", {
         src: url,
         css: {
           'max-width': 'auto',
@@ -242,53 +242,15 @@
             // window.URL.revokeObjectURL(this.src);
           },
         }
-      });
-      // lightbox display
-      $('<a>', {
-          'href': url,
-          'data-lightbox': 'imageSet',
-          'data-title': fileName,
-
-        })
-        .append($img)
-        .appendTo(imgItem);
-
+      }).appendTo(imgItem);
 
       // 建立caption
-      var $caption = $('<div>', {
+      $('<div>', {
         class: 'caption',
         text: fileName
-      });
-      // // append desc
-      // $caption.append($('<a>', {
-      //     href: '#',
-      //     html: fileName,
-      //     on: {
-      //         click: function() {
-      //             var modifiedDesc = prompt("Modify Description:", this.innerHTML);
-      //             if (modifiedDesc != null) {
-      //                 this.innerHTML = modifiedDesc;
-      //             }
-      //         }
-      //     }
-      // }));
-      // append remove icon
-      // $caption.append($('<a>', {
-      //     'href': '#',
-      //     'css': {
-      //         'right': 1,
-      //         'cssFloat': 'right'
-      //     }
-      // }).append($('<img>', {
-      //     src: "images/Cancel-24.png",
-      //     click: function() {
-      //         $(this).parent("a").parent().parent(".image-frame").remove();
-      //     }
-      // })));
+      }).appendTo(imgItem);
 
-      $caption.appendTo(imgItem);
-
-      // 功能列
+      // 建立圖片修改/刪除/放大..等function icon
       // <div>
       //   <a><img src='cancel' onclick='...'></a>
       //   <a><img src='edit' onclick='...'></a>
@@ -299,6 +261,7 @@
         $('<a>', {
           href: '#',
         }).append(
+          //remove
           $('<img>', {
             src: "images/Cancel-48.png",
             click: function() {
@@ -336,6 +299,7 @@
             }
           })
         ),
+        //edit
         $('<a>', {
           href: '#',
         }).append(
@@ -367,7 +331,18 @@
               });
             }
           })
-        )).appendTo(imgItem);
+        ),
+        //view (lightbox effect)
+        $('<a>', {
+          'href': url,
+          'data-lightbox': 'imageSet',
+          'data-title': fileName,
+        }).append(
+          $('<img>', {
+            src: "images/Search-Find-48.png",
+          })
+        )
+      ).appendTo(imgItem);
 
 
       //The .hover() method, when passed a single function, will execute that handler for both mouseenter and mouseleave events.
