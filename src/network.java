@@ -44,7 +44,7 @@ public class network {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		
+		// TCP Server
 		try {
 			ServerSocket server = new ServerSocket(8888);
 			Socket socket = server.accept();
@@ -56,7 +56,8 @@ public class network {
 			{
 				System.out.print((char)temp);
 			}
-			
+			System.out.println();
+			System.out.println("client ip:"+socket.getInetAddress());
 			is.close();
 			socket.close();
 			server.close();
@@ -64,7 +65,7 @@ public class network {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		// TCP Client
 		try {
 			Socket socket = new Socket(ip, 8888);
 			OutputStream out = socket.getOutputStream();
