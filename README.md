@@ -5,7 +5,9 @@
 - ui - dnd to load image
 - ui - fullscreen on different browser engine
 - ui - divide function and description of image
-- serv - upload image to server
+
+> - serv - upload image to server
+
 - serv - get picture from picasa
 - serv - Oauth with google
 - db - create schema
@@ -13,7 +15,7 @@
 ## fix
 - white space at the bottom of image within div(border)
 ```html
-img 
+img
 float:left
 ```
 - ui - use light box to enlarge image
@@ -23,7 +25,3 @@ float:left
 
 
 # php - php/mysql
-
-
-
-
