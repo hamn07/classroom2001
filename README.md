@@ -6,6 +6,11 @@
 - ui - fullscreen on different browser engine
 - ui - divide function and description of image
 - serv - upload image to server
+  -- rename to index.php
+  -- select file
+  -- upload file
+  -- use hash
+  -- get first 2 character as folder name
 - serv - get picture from picasa
 - serv - Oauth with google
 - db - create schema
@@ -13,7 +18,7 @@
 ## fix
 - white space at the bottom of image within div(border)
 ```html
-img 
+img
 float:left
 ```
 - ui - use light box to enlarge image
@@ -23,7 +28,3 @@ float:left
 
 
 # php - php/mysql
-
-
-
-
