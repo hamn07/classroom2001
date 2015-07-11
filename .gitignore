@@ -4,3 +4,4 @@
 .classpath
 .buildpath
 *.class
+/project/img-repo

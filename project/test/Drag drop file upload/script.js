@@ -1,5 +1,5 @@
-$(document).ready(function(){	
-	var dropbox;  
+$(document).ready(function(){
+	var dropbox;
 
 var oprand = {
 	dragClass : "active",
@@ -7,31 +7,31 @@ var oprand = {
         load: function(e, file) {
 			// check file type
 			var imageType = /image.*/;
-			if (!file.type.match(imageType)) {  
+			if (!file.type.match(imageType)) {
 			  alert("File \""+file.name+"\" is not a valid image file");
-			  return false;	
-			} 
-			
+			  return false;
+			}
+
 			// check file size
-			if (parseInt(file.size / 1024) > 2050) {  
+			if (parseInt(file.size / 1024) > 2050) {
 			  alert("File \""+file.name+"\" is too big.Max allowed size is 2 MB.");
-			  return false;	
-			} 
+			  return false;
+			}
 
 			create_box(e,file);
     	},
     }
 };
 
-	FileReaderJS.setupDrop(document.getElementById('dropbox'), oprand); 
-	
+	FileReaderJS.setupDrop(document.getElementById('dropbox'), oprand);
+
 });
 
 create_box = function(e,file){
 	var rand = Math.floor((Math.random()*100000)+3);
 	var imgName = file.name; // not used, Irand just in case if user wanrand to print it.
 	var src		= e.target.result;
-
+	console.log(src);
 	var template = '<div class="eachImage" id="'+rand+'">';
 	template += '<span class="preview" id="'+rand+'"><img src="'+src+'"><span class="overlay"><span class="updone"></span></span>';
 	template += '</span>';
@@ -41,7 +41,7 @@ create_box = function(e,file){
 		$("#dropbox").html(template);
 	else
 		$("#dropbox").append(template);
-	
+
 	// upload image
 	upload(file,rand);
 }
@@ -63,18 +63,18 @@ upload = function(file,rand){
 		}
 	}, false);
 
-	xhr[rand].onreadystatechange = function (oEvent) {  
-	  if (xhr[rand].readyState === 4) {  
-		if (xhr[rand].status === 200) {  
+	xhr[rand].onreadystatechange = function (oEvent) {
+	  if (xhr[rand].readyState === 4) {
+		if (xhr[rand].status === 200) {
 		  $(".progress[id='"+rand+"'] span").css("width","100%");
 		  $(".preview[id='"+rand+"']").find(".updone").html("100%");
 		  $(".preview[id='"+rand+"'] .overlay").css("display","none");
-		} else {  
-		  alert("Error : Unexpected error while uploading file");  
-		}  
-	  }  
-	};  
-	
+		} else {
+		  alert("Error : Unexpected error while uploading file");
+		}
+	  }
+	};
+
 	// Set headers
 	xhr[rand].setRequestHeader("Content-Type", "multipart/form-data");
 	xhr[rand].setRequestHeader("X-File-Name", file.fileName);

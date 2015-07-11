@@ -36,7 +36,7 @@
       $("#urlSelect").click(function(e) {
           var imgUrl = prompt("Please enter image url:", "http://");
           if (imgUrl != null) {
-            myFuncRenderImage(imgUrl, imgUrl.filename(), false);
+            myFuncRenderImage(null, imgUrl, imgUrl.filename(), false);
           }
         })
         // 由client端filesystem加入圖片
@@ -57,8 +57,40 @@
             var file = fileList[i];
             // 轉換成local url
             var objectURL = window.URL.createObjectURL(file);
+            var rand = Math.floor((Math.random()*100000)+3);
+            // 上傳到server
+            $.ajax({
+              url: "upload.php?rand="+rand,
+              type: "POST",
+              data: file,
+              processData: false, //Work around #1
+              contentType: file.type, //Work around #2
+              datatype: "json",
+              success: function(img){
+                  // console.log($(".image-frame[id='"+img.id+"'] > img"));
+                  $(".image-frame[id='"+img.id+"']>img").attr('src',img.url);
+              },
+              error: function(){alert("Failed");},
+              // Work around #3
+              xhr: function() {
+                  myXhr = $.ajaxSettings.xhr();
+                  var id = rand;
+                  // console.log(rand);
+                  if(myXhr.upload){
+                      myXhr.upload.addEventListener('progress',function(evt){
+                        if (evt.lengthComputable) {
+                          var percentComplete = 100 - (evt.loaded / evt.total) * 100;
+                          $(".image-frame[id='"+id+"'] .overlay-progress").css("width",percentComplete+"%");
+                        }
+                      }, false);
+                  } else {
+                      console.log("Uploadress is not supported.");
+                  }
+                  return myXhr;
+              }
+            });
 
-            myFuncRenderImage(objectURL, file.name, true);
+            myFuncRenderImage(rand, objectURL, file.name, true);
           }
         })
         // 由client端filesystem加入音樂
@@ -220,11 +252,21 @@
     // url: 圖片位址
     // fileName: 圖片說明
     // isLocal: 是否為local image upload
-    function myFuncRenderImage(url, fileName, isLocal) {
+    function myFuncRenderImage(rand, url, fileName, isLocal) {
+
 
       // 建立div物件，並將img物件餵給它
       var imgItem = document.createElement("div");
       imgItem.className = "image-frame";
+      imgItem.id = rand;
+      //The .hover() method, when passed a single function, will execute that handler for both mouseenter and mouseleave events.
+      $(imgItem).hover(function() {
+          $(this).children('.fn').fadeIn('normal');
+        },
+        function() {
+          $(this).children('.fn').fadeOut('normal');
+        }
+      );
       $("#content").prepend(imgItem);
 
 
@@ -254,6 +296,7 @@
       // <div>
       //   <a><img src='cancel' onclick='...'></a>
       //   <a><img src='edit' onclick='...'></a>
+      //   <a><img src='view' onclick='...'></a>
       // </div>
       $('<div>', {
         class: 'fn',
@@ -344,33 +387,17 @@
         )
       ).appendTo(imgItem);
 
+      // 上傳進度條span
+      $('<div>',{
+        class: 'overlay-progress'
+      }).appendTo(imgItem);
+      // $('<div>',{
+      //   class: 'progress',
+      // }).append(
+      //   $('<span>',{})
+      // ).appendTo(imgItem);
+      // ;
 
-      //The .hover() method, when passed a single function, will execute that handler for both mouseenter and mouseleave events.
-      $(imgItem).hover(function() {
-          // $(this).children('a').children('img').animate({
-          //     'width': $(this).width() * 1.2,
-          //     'height': $(this).height() * 1.2,
-          //     'top': -15,
-          //     'left': -15
-          // }, {
-          //     duration: 200
-          // });
-          // $(this).children('div').stop(false, true).fadeIn(200);
-          $(this).children('.fn').fadeIn('normal');
-        },
-        function() {
-          // $(this).children('a').children('img').animate({
-          //     'width': $(this).width(),
-          //     'height': $(this).height(),
-          //     'top': '0',
-          //     'left': '0'
-          // }, {
-          //     duration: 100
-          // });
-          // $(this).children('div').stop(false, true).fadeOut(200);
-          $(this).children('.fn').fadeOut('normal');
-        }
-      );
     }
     document.onkeyup = function(e) {
       if (!e) e = window.event;
