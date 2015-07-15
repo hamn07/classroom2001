@@ -11,6 +11,13 @@
 - db - create schema
   - account management
 
+## db design
+
+[Drawing the Entity-Relationship Diagram](http://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_dev1.htm)
+
+[cacoo](https://cacoo.com)
+
+
 ## feature
 - serv - upload image to server
 - -- rename to index.php
