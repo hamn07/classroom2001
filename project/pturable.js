@@ -61,6 +61,7 @@
             // 上傳到server
             $.ajax({
               url: "upload.php?rand="+rand,
+              // url: "http://localhost/api/user/hamn07?apiKey=henrykey&max-result=10",
               type: "POST",
               data: file,
               processData: false, //Work around #1
